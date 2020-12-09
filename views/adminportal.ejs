@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BackBenchers</title>
+</head>
+<body>
+  <h1>welcome to admin portal</h1>
+  <p>total articles till now are : <%= totalArticles %></p>
+  <p><%=currentUser.username%> is logged in! as <%=currentUser.role%></p>
+  <div><a href="/unreviewedposts">go to unreviewed articles</a></div>
+  <br><br>
+  <div><a href="/createusers">create users with any roles</a></div>
+  <br><br>
+  <div> <a href="/reviewedByAuditors">posts which auditors have submitted for final confirmation after editing</a></div>
+  <br><br>
+  <div><button onclick="updateTrending()">updateTrending</button></div>
+  <br><br>
+  <div><button onclick="updatePopular()">updatePopular</button></div>
+  <br><br>
+  <div><button onclick="updateRecommended()">updateRecommended</button></div>
+  <div><a href="/posts/business-economics?page=1">Go to Business economics page  directly </a></div>
+  <div><a href="/posts/commerce?page=1">go to commerce page directly </a></div>
+  <div><a href="/posts/engineering?page=1">go to engineering page directly </a></div>
+  <div><a href="/posts/engineering?page=1">go to personality development page directly </a></div>
+  <div><a href="/posts/new">create new posts</a></div>
+  <br><br>
+  <div><a href="/showips">click here to list all of the ip addresses who visited this site</a></div>
+ 
+</body>
+
+<script>
+
+  
+  var httpRequest;
+  function updateTrending(){
+     
+      httpRequest = new XMLHttpRequest();
+      if (!httpRequest) {
+        alert('Giving up :( Cannot create an XMLHTTP instance');
+        return false;
+      }
+      httpRequest.onreadystatechange = updateTrendingRequest;
+      httpRequest.open('GET', '/updateTrending');
+      httpRequest.send();
+    }
+    function updateTrendingRequest(){
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200 ) {
+          var resJson = JSON.parse(httpRequest.responseText)
+          console.log(resJson)
+        } else {
+          alert('There was a problem with the request.');
+        }
+      } else {
+        console.log("not ready")
+      }
+    }
+
+
+    function updatePopular(){
+     
+     httpRequest = new XMLHttpRequest();
+     if (!httpRequest) {
+       alert('Giving up :( Cannot create an XMLHTTP instance');
+       return false;
+     }
+     httpRequest.onreadystatechange = updatePopularRequest;
+     httpRequest.open('GET', '/updatePopular');
+     httpRequest.send();
+   }
+   function updatePopularRequest(){
+     if (httpRequest.readyState === XMLHttpRequest.DONE) {
+       if (httpRequest.status === 200 ) {
+         var resJson = JSON.parse(httpRequest.responseText)
+         console.log(resJson);
+       } else {
+         alert('There was a problem with the request.');
+       }
+     } else {
+       console.log("not ready")
+     }
+   }
+
+
+
+   function updateTrendingRequest(){
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200 ) {
+          var resJson = JSON.parse(httpRequest.responseText)
+          console.log(resJson)
+        } else {
+          alert('There was a problem with the request.');
+        }
+      } else {
+        console.log("not ready")
+      }
+    }
+
+
+    function updateRecommended(){
+     
+     httpRequest = new XMLHttpRequest();
+     if (!httpRequest) {
+       alert('Giving up :( Cannot create an XMLHTTP instance');
+       return false;
+     }
+     httpRequest.onreadystatechange = updateRecommendedRequest;
+     httpRequest.open('GET', '/updateRecommended');
+     httpRequest.send();
+   }
+   function updateRecommendedRequest(){
+     if (httpRequest.readyState === XMLHttpRequest.DONE) {
+       if (httpRequest.status === 200 ) {
+         var resJson = JSON.parse(httpRequest.responseText)
+         console.log(resJson);
+       } else {
+         alert('There was a problem with the request.');
+       }
+     } else {
+       console.log("not ready")
+     }
+   }
+
+
+
+
+
+</script>
+
+
+</html>

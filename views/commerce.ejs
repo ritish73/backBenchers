@@ -1,0 +1,385 @@
+<%- include("./partials/header1.ejs") %>
+<link rel="stylesheet" href="/stylesheets/commerce.css">
+<%- include("./partials/header2.ejs") %>
+    <header>
+    <div class="top-horiz-bar">
+        <div class="logo-section-in-bar">
+            <img class="top-img-logo" src="/images/final_2.png" alt="logo-pic" height="60px" width="60px">
+            <!-- <img class="top-name-logo" src="./zoomed-brand-name.png" alt="logo-name" height="80px" width="130px"> -->
+            <img class="top-img2-logo" src="/images/5.png" alt="logo-pic" height="60rem" width="145rem">
+            
+        </div>
+
+
+        <div class="other-icons">
+
+        <div class="search-box">
+            <input id="search-font" class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class="search-btn" href="#">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+        <div class="person-account">
+            <a class="account-info" href="#">
+                <!-- <i class="far fa-user-circle fa-2x"></i> -->
+                <span>Sign-in/up</span>
+            </a>
+        </div>
+
+        <div class="dropdown">
+                <button  class="dropdown-arrow">
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                 <div  id="dropdown-content">
+                    <a href="#">Saved for later</a>
+                    <a href="#">Profile</a>
+                    <a href="#">View my articles</a>
+                    <a href="#">Sign-out</a>
+                </div> 
+            </div>
+        </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+<div class="vertical-nav-bar">
+    <a href="#">Home<span><i class="fas fa-home"></i></span></a>
+    <a class="blog-section-left" href="#">Blogs<span><i class="fas fa-user-graduate"></i></span>
+    <!-- <ul class="sections-blog">
+        <a  class="option-blog" href="#"><li>Business & Economics</li></a>
+        <a  class="option-blog" href="#"><li>Commerce</li></a>
+        <a  class="option-blog" href="#"><li>Personality Devlopment</li></a>
+    </ul> -->
+    </a>
+    <a href="#">Authors<span><i class="fas fa-pencil-alt"></i></span></a>
+    <a href="#">Newsletter<span><i class="fas fa-newspaper"></i></span></a>
+    <a href="#">Contact US<span><i class="fas fa-phone-alt"></i></span></a>
+    <!-- <a href="#">Services<span><i class="fas fa-question"></i></span></a> -->
+    <a href="#">About Us<span><i class="fas fa-users"></i></span></a>
+    <!-- <a href="#">Services<span><i class="fas fa-question"></i></span></a> -->
+    
+   
+</div>
+<div class="all-engineering-articles">
+
+    <div class="side-box">
+        <div class="one-of-3-heading">
+            <h2 class="side-box-heading-one">Trending</h2>
+            <% for(var i=0;i<3;i++){ %>
+                <div class="sub-part-section">
+                    <h2 class="title-side-box"><a href="/posts/<%=trendingPosts[i].post.subject%>/<%=trendingPosts[i].post.slug%>"><%=trendingPosts[i].post.title%></a></h2>
+                    <div class="date-side-box">
+                        <span><%=trendingPosts[i].post.publishDay%></span>
+                    </div>
+                </div>
+                <% } %>    
+        </div>
+
+
+        <div class="two-of-3-heading">
+            <h2 class="side-box-heading-two">Recommended</h2>
+            <% for(var i=0;i<3;i++){ %>
+                <div class="sub-part-section">
+                    <h2 class="title-side-box"><a href="/posts/<%=trendingPosts[i].post.subject%>/<%=trendingPosts[i].post.slug%>"><%=trendingPosts[i].post.title%></a></h2>
+                    <div class="date-side-box">
+                        <span><%=trendingPosts[i].post.publishDay%></span>
+                    </div>
+                </div>
+                <% } %>  
+        </div>
+
+
+        <div class="three-of-3-heading">
+            <h2 class="side-box-heading-three">Popular</h2>
+            <% for(var i=0;i<3;i++){ %>
+                <div class="sub-part-section">
+                    <h2 class="title-side-box"><a href="/posts/<%=popularPosts[i].post.subject%>/<%=popularPosts[i].post.slug%>"><%=popularPosts[i].post.title%></a></h2>
+                    <div class="date-side-box">
+                        <span><%=popularPosts[i].post.publishDay%></span>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+<div class="table-all">
+    <% for(var i=0; i<posts.length; i+=2) { %> 
+            
+    <div class="row">
+        <% if(i<=posts.length-1){ %>
+            <% if(posts[i] !== null && posts[i].isReviewedByAdmin === true){ %>
+        <div class="column">
+            <div class="blog-post">
+                <div class="blog-post__img">
+                    <img src="/uploads/img/posts/<%=posts[i].postNumber%>.png" alt="article-pic" class="blog-post__article-img">
+                </div>
+                <div class="blog-post__info">
+                    <div class="blog-post__date">
+                        <span><%= posts[i].publishDay%></span>
+                        <span><%= posts[i].publish_date %></span>
+                    </div>
+                    <div class="author-name">
+                        <ul class="author-content">
+                            <li class="name-aut"><%= posts[i].author.username %>></li>
+                            <button onclick="saveToLater(this)" getpost="<%=posts[i].slug%>" > <li class="save-to-later"><i class="fas fa-plus "></i></li></button>
+                           
+                        </ul>
+                    </div>
+                    <div>
+                        <h1 class="blog-post__title"><%=posts[i].title%></h1>
+                    <p class="blog-post__text"><%= posts[i].content.substring(0,120) %>...</p>
+                    </div>
+                    
+                    <a href="/posts/commerce/<%=posts[i].slug%>" class="blog-post__cta">Read more</a>
+                    <ul class="btns-on-blogcard">
+                        <!-- <li class="btns-blog"><i class="far fa-eye fa-2x "></i></li> -->
+                        <li class="btns-blog"><i class="far fa-hand-peace fa-2x "></i></li>
+                        <li class="btns-blog"><i class="fas fa-share fa-2x "></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% } %>
+
+        <% if( i+1 <= posts.length-1 ){ %>
+            
+            <% if(posts[i+1] !== null && posts[i+1].isReviewedByAdmin === true){ %>
+            <div class="column">
+                <div class="blog-post">
+                    <div class="blog-post__img">
+                        <img src="/uploads/img/posts/<%=posts[i+1].postNumber%>.png" alt="article-pic" class="blog-post__article-img">
+                    </div>
+                    <div class="blog-post__info">
+                        <div class="blog-post__date">
+                            <span><%= posts[i+1].publishDay%></span>
+                            <span><%= posts[i+1].publish_date %></span>
+                        </div>
+                        <div class="author-name">
+                            <ul class="author-content">
+                                <li class="name-aut"><%= posts[i+1].author.username %>></li>
+                                <button onclick="saveToLater(this)" getpost="<%=posts[i+1].slug%>" > <li class="save-to-later"><i class="fas fa-plus "></i></li></button>
+                               
+                            </ul>
+                        </div>
+                        <h1 class="blog-post__title"><%=posts[i+1].title%></h1>
+                        <p class="blog-post__text"><%= posts[i+1].content.substring(0,120) %>...</p>
+                        <a href="/posts/commerce/<%=posts[i+1].slug%>" class="blog-post__cta">Read more</a>
+                        <ul class="btns-on-blogcard">
+                            <!-- <li class="btns-blog"><i class="far fa-eye fa-2x "></i></li> -->
+                            <li class="btns-blog"><i class="far fa-hand-peace fa-2x "></i></li>
+                            <li class="btns-blog"><i class="fas fa-share fa-2x "></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        <% } %>
+    </div>
+
+        
+    <% } %>
+</div>    
+
+            
+
+            <div class="page-end">
+                &nbsp;
+            </div>
+
+            <div class="next-page">
+                <h2 class="new-page-blogs">-Page 1 of 1- <span class="next-page-btn">Next page</span></h2>
+            </div>
+        </div>
+        </section> 
+        </header>
+
+        <!-- <footer class="footer">
+            <div class="l-footer">
+                <h1><img src="./2.png" alt="logo" height="200px" width="200px"></h1>
+            </div>
+
+            <ul class="r-footer">
+                <li>
+                    <h2>Quick links</h2>
+                    <ul class="box">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Business & Economics</a></li>
+                        <li><a href="#">Commerce</a></li>
+                        <li><a href="#">Engineering</a></li>
+                        <li><a href="#">Personality Devlopment</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h2>Social</h2>
+                    <ul class="box h-box">
+                        <li><a href="#">instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Linked in</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h2>Legal</h2>
+                <ul class="box">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                </ul>
+            </li>
+
+                <div class="b-footer">
+                    <p>All rights reserved by &copy;Backbenchers </p>
+                </div>
+
+            </ul>
+        </footer> -->
+
+
+        <footer>
+            <div class="main-content">
+                <div class="left box">
+                    <div class="content">
+                        <div class="logo-footer-img">
+                        <img src="/images/2.png" alt="logo" height="250px" width="250px">
+                    </div>
+                        <div class="social">
+                            <a href="#"><span class="fab fa-facebook-f"></span></a>
+                            <a href="#"><span class="fab fa-instagram"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center box">
+                    <h2>Quick links</h2>
+                    <div class="content">
+                        <ul class="links">
+                        <li><a href="#"> > Home</a></li>
+                        <li><a href="#"> > Business & Economics</a></li>
+                        <li><a href="#"> > Commerce</a></li>
+                        <li><a href="#"> > Engineering</a></li>
+                        <li><a href="#"> > Personality Devlopment</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="center-right box">
+                    <h2>Company</h2>
+                    <div class="content">
+                        <ul class="links">
+                        <li><a href="#"> > About</a></li>
+                        <li><a href="#"> > Contact</a></li>
+                        <li><a href="#"> > Terms</a></li>
+                        <li><a href="#"> > Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+
+                <div class="right box">
+                    <h2>Any queries ?</h2>
+                    <div class="content">
+                        <form action="#">
+                            <div class="email">
+                                <div class="text">Email *</div>
+                                <input type="email" required>
+                            </div>
+                            <div class="msg">
+                                <div class="text">Message *</div>
+                                <textarea  cols="25" rows="2"></textarea>
+                            </div>
+                            <div class="btn">
+                                <button type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom">
+                <center>
+                    <span class="credits">Created by <a href="#">Backbenchers</a> | </span>
+                    <span class="far fa-copyright"></span><span> 2020 All rights reserved.</span>
+                </center>
+            </div>
+        </footer>
+
+
+        <script>  
+            var httpRequest;
+            var currentUser;
+         
+         (function () {
+             httpRequest = new XMLHttpRequest();
+                 if (!httpRequest) {
+                   alert('Giving up :( Cannot create an XMLHTTP instance');
+                   return false;
+                 }
+                 httpRequest.onreadystatechange = findUserRequest;
+                 httpRequest.open('GET', '<%=hostname%>/findUser')  
+                 httpRequest.send();
+         
+         
+                 function findUserRequest(){
+                   if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                     if (httpRequest.status === 200) {
+                       var respJson = JSON.parse(httpRequest.responseText)
+                       currentUser = respJson.CurrentUser;
+                   
+                       console.log("current user is : ", currentUser)
+                     } else {
+                       alert('There was a problem with the request.');
+                     }
+                   }
+               }
+         
+         
+         })();
+                     
+          
+          
+         
+             if(currentUser){ 
+             console.log("clicking add to later button")
+         
+                 function saveLaterRequest(){
+                    
+                   if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                     if (httpRequest.status === 200 ) {
+                         console.log(responseText)
+                         console.log('saved to later')
+                     } else {
+                       alert('There was a problem with the request.');
+                     }
+                   }
+                 }
+             }
+            
+                  
+               function saveToLater(e){
+                 
+                 var curPostSlug = e.getAttribute('getpost');    
+                 console.log("curpostslug " + curPostSlug)
+                 if(currentUser){
+                     httpRequest = new XMLHttpRequest();
+                 if (!httpRequest) {
+                   alert('Giving up :( Cannot create an XMLHTTP instance');
+                   return false;
+                 }
+                 httpRequest.onreadystatechange = saveLaterRequest;
+                 httpRequest.open('POST', '<%=hostname%>/savetolater/' + curPostSlug);        
+                 httpRequest.send();
+               } else {
+                   console.log("you need to login to save this post")
+               }
+             }   
+         </script>
+
+<%- include("./partials/footer.ejs") %>

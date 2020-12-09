@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+
+.overall-footer
+{
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.our-name
+{
+    color: white;
+    font-size: 47px;
+    font-family: 'poppins',cursive;
+    margin-left: 70px;
+    cursor: pointer;
+    
+}
+.first-part
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.bordering-right
+{
+    position: absolute;
+    right: 80%;
+    top: 19%;
+    border-right: 5px solid rgba(255, 0, 0, 0.801);
+    height: 250px;
+}
+
+.second-part
+{
+    color:white;
+    font-family: 'poppins',cursive;
+    text-decoration: none;
+}
+.second-links
+{
+    font-size: 38px;
+    position: absolute;
+    top: 7.5%;
+    left: 24%;
+
+}
+
+.ul-class-footer
+{
+    list-style: none;
+    position: absolute;
+    top: 19%;
+    left: 24%;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+.quick-buttons
+{
+    margin-bottom: 25px;
+    border-bottom: 0.1px solid rgba(0, 0, 0, 0.137);
+
+}
+
+#logo-of-learners
+{
+    cursor: pointer;
+}
+
+.media-buttons-footer
+{
+    position: absolute;
+    top: 37%;
+    left: 44.1%;
+
+}
+
+.btns-footer-class
+{
+    color: white;
+    margin-right: 21px;
+    cursor: pointer;
+}
+
+.third-links
+{
+    
+    font-size: 38px;
+    position: absolute;
+    top: 7.5%;
+    left: 44%;
+    font-family: 'poppins',cursive;
+    color: white;
+}
+
+.fourth-links
+{
+    
+    font-size: 38px;
+    position: absolute;
+    top: 7.5%;
+    left: 60%;
+    font-family: 'poppins',cursive;
+    color: white;
+}
+
+.fifth-links
+{
+    font-size: 38px;
+    position: absolute;
+    top: 7.5%;
+    left: 78%;
+    font-family: 'poppins',cursive;
+    color: white;
+
+}
+
+.third-para
+{
+    color: white;
+    position: absolute;
+    left: 44%;
+    top: 18.5%;
+    font-family: 'poppins',cursive;
+    font-size: 20px;
+    max-width: 190px;
+}
+
+.fifth-para
+{
+    color: white;
+    position: absolute;
+    left: 78%;
+    top: 18.5%;
+    font-family: 'poppins',cursive;
+    font-size: 20px;
+    max-width: 300px;
+
+}
+
+#envolope-footer
+{
+    color: white;
+    position: absolute;
+    top: 19%;
+    left:60% ;
+}
+
+#email-footer
+{
+    color: white;
+    font-size: 15px; 
+    font-family: 'poppins',cursive;
+    position: absolute;
+    top: 19%;
+    left:62.5% ;
+}
+
+.content-contact-footer
+{
+    font-family: 'poppins',cursive;
+    position: absolute;
+    top: 25%;
+    left: 60%;
+    color: white;
+}
+
+.email-footer
+{
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.message-footer
+{
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.send-button-footer
+{
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+button[type=submit]
+{
+    padding:2px 7px;
+    font-size: 15px;
+}
+
+input[type=email]
+{
+    padding-right:  40px;
+    padding-bottom: 10px;
+}
+
+input[type=text]
+{
+    padding-right:  40px;
+    padding-bottom: 50px;
+}
+
+#email-footer
+{
+    padding-top: 7px;
+}
+
+.suscribe-footer
+{
+    position: absolute;
+    top: 37%;
+    left: 78%;
+}
+
+input[type=search]
+{
+    padding-bottom: 15px;
+}
+
+button[type=button]
+{
+    padding-right: 22px;
+    padding-bottom: 1px;
+    justify-content: center;
+    font-family: 'poppins',cursive;
+    cursor: pointer;
+
+}
+
+#suscribing
+{
+    background-color: rgba(255, 0, 0, 0.767);
+    color: black;
+    font-size: 21px;
+    font-weight: bold;
+    justify-content: center;
+    margin-right: 1px;
+    cursor: pointer;
+}
+
+.red-btn-suscribe
+{
+    position: absolute;
+    top: 0%;
+    left: 101%;
+}
+
+.box-copy
+{
+    width: 100%;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.582);
+   
+}
+
+.btns-margin
+{
+    align-items: center;
+    display: flex;
+    position: absolute;
+    right: 0px;
+
+}
+
+.bottom-copy-footer
+{
+    font-size: 15px;
+    color: white;
+    font-family: 'poppins',cursive;
+    margin-right: 30px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.final-copywrite
+{
+    color: white;
+    font-size: 15px; ;
+    align-items: center;
+    font-family: 'poppins',cursive;
+    position: absolute;
+    left: 38%;
+}
+
+#facebook-1:hover
+{
+    color: rgb(0, 153, 255);
+}
+#instagram-1:hover
+{
+    color:rgb(255, 102, 0);
+}
+#linkedin-1:hover
+{
+    color: rgb(0, 68, 255);
+}
+
+
+
+ 

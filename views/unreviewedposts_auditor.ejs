@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BackBenchers</title>
+</head>
+<body>
+
+  <h1>unreviewed posts of all the subjects are here for you assigned by the admin</h1>
+  <% if(currentUser !== null && currentUser.role === "auditor" ){ %>
+    <p><%=JSON.stringify(currentUser)%> with <%=currentUser.role%> role is logged in!</p>
+  <br><br><br>
+  <% for(var i=0; i<list.length; i++){ %>
+    
+    <h1> <%=list[i].title%> </h1> 
+    <h3> <%=list[i].publishDay%> <%=list[i].publish_date%> </h3>
+    <h3>published by <%=list[i].author.username%></h3>
+    <h4>this post is of <%=list[i].subject%></h4>
+
+    <p><%-list[i].sanitizedHtml%> </p>
+    <div> is reviewed by admin <%=list[i].isReviewedByAdmin%></div>
+    <div> is reviewed by auditor <%=list[i].isReviewedByAuditor%></div>
+    <div>
+      <span>Likes: <%=list[i].likes%></span>
+      <span>Views: <%=list[i].views%></span>
+    </div>
+
+    <button id="approve" getpost= "<%=list[i].slug%>"  role="auditor" onclick="approveFunc(this)">approve this post and send to admin for final checking</button>
+  
+    <button getpost= "<%=list[i].slug%>" onclick="clearpost(this)">clear</button>
+    <!-- here we put the operations on these posts by th admins or auditors -->
+    <a href="/posts/<%=list[i]._id%>/edit">Edit this post</a>
+    <p id="reviewstatus"></p>
+    <br><br><br><br><br>
+  <% } %>
+  
+  <% } %>
+
+</body>
+
+<script>
+      
+ 
+  var httpRequest;
+  var status = document.querySelector('#reviewstatus');
+  var test; 
+  function approveFunc(e){
+      curPostSlug = e.getAttribute('getpost');           
+      console.log(curPostSlug);
+      httpRequest = new XMLHttpRequest();
+      if (!httpRequest) {
+        alert('Giving up :( Cannot create an XMLHTTP instance');
+        return false;
+      }
+      httpRequest.onreadystatechange = approveFuncRequest;
+      httpRequest.open('GET', '<%=hostname%>/approvepostbyauditor/'+ curPostSlug);
+      httpRequest.send();
+    }
+    function approveFuncRequest(){
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200 ) {
+          var resJson = JSON.parse(httpRequest.responseText)
+          console.log(resJson.reviewed)
+          status.innerHTML = "resJson.reviewed"
+        } else {
+          alert('There was a problem with the request.');
+        }
+      } else {
+        console.log("not ready")
+      }
+    }
+    function clearpost(e){
+      postname = e.getAttribute('getpost')       
+      console.log( postname);
+      httpRequest = new XMLHttpRequest();
+      if (!httpRequest) {
+        alert('Giving up :( Cannot create an XMLHTTP instance');
+        return false;
+      }
+      httpRequest.onreadystatechange = clearpostRequest;
+      httpRequest.open('GET', '<%=hostname%>/clear/'+postname);
+      httpRequest.send();
+    }
+    function clearpostRequest(){
+      
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200 ) {
+          var resJson = JSON.parse(httpRequest.responseText)
+          console.log(resJson);
+       
+        
+        } else {
+          alert('There was a problem with the request.');
+        }
+      } else {
+        console.log("not ready")
+      }
+    }
+
+
+</script>
+
+</html>

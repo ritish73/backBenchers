@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.vertical-bar
+{
+    position: fixed;
+    left: -14rem;
+    width: 14rem;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.452);
+}
+
+.vertical-bar header
+{
+    color:white;
+    font-size: 1.75rem;
+    line-height: 4.4rem;
+    background: rgba(0, 0, 0, 0.452);
+    text-align: center;
+    user-select: none;
+    font-family: 'poppins',cursive;
+}
+
+.vertical-bar .verical-ankel
+{
+    display:block;
+    color: white;
+    height: 4.1rem;
+    width: 100%;
+    line-height: 4rem;
+    padding-left: 2rem;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    border-left: 6px solid transparent;
+    box-sizing: border-box;
+    font-family: 'Bangers',cursive;
+}
+
+.verical-ankel:hover,
+.verical-ankel:active
+{
+    border-left: 6px solid rgb(204, 28, 28);
+    color: rgb(204, 28, 28);
+}
+
+.vertical-bar  .verical-ankel i
+{
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.vertical-bar  .verical-ankel span
+{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#check
+{
+    display: none;
+}
+
+label #button,
+label #cancel
+{
+    position: absolute;
+    cursor: pointer;
+    background: blac;
+    height: 3rem;
+    width: 3rem;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 2rem;
+    margin: 15px 30px;
+   /* border: 1px solid rgb(204, 23, 23); */
+    border-radius: 1rem;
+    transition: all .5s ease;
+}
+
+label #cancel
+{
+    opacity: 0;
+    visibility: hidden;
+}
+
+#check:checked ~ label #button
+{
+    margin-left: 14.5rem;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#check:checked ~ label #cancel
+{
+    margin-left: 14.5rem;
+    visibility: visible;
+    opacity: 1;
+}
+
+#check:checked ~ .vertical-bar
+{
+    left: 0;
+}
+
+@media (max-width: 860px)
+{
+    .vertical-bar
+    {
+        height: auto;
+        width: 70px;
+        left: 0;
+        margin: 100px 0;
+    }
+    header,#button,#cancel
+    {
+        display: none;
+    }
+
+    span
+    {
+        position: absolute;
+        margin-left: 50px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .vertical-bar  .verical-ankel i 
+    {
+        margin-left: -10px;
+    }
+
+    .verical-ankel:hover
+    {
+        width: 200px;
+        background:inherit;
+    }
+
+    .vertical-bar  .verical-ankel:hover span 
+    {
+        opacity: 1;
+        visibility: visible;
+    }
+}

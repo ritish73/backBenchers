@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BackBenchers</title>
+
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f3979a7285fa93a"></script>
+
+</head>
+
+<body>
+  
+  <h1> <%= post.title %> </h1>
+  <h3> <%= post.publish_date %> </h3> 
+  <h5> published by <%= post.author.username %></h5>
+  <p> <%- post.sanitizedHtml %></p>
+  <button id="save-to-later">save later</button>
+  
+  <button type="button" id="like">like</button> 
+  
+  <span class="likescount"><%= post.likes %></span>
+  <button id="share"><a href="https://api.whatsapp.com/send?text=<%=hostname%>/posts/engineering/<%= post._id %>" data-action="share/whatsapp/share" target="_blank"> share on whatsapp </a></button>
+
+  <div id="message"></div>  
+  <script>
+
+      var currentUser;
+      var currentPost;
+      var httpRequest;
+      async function callfun(){
+        await findPostAndUser();
+        next();
+      }
+      callfun();
+
+      function next(){
+
+        var likebutton = document.getElementById("like");
+        var likesdisplay = document.querySelector('.likescount');
+        var messageDisplay = document.querySelector('#message');
+        likebutton.addEventListener('click', like);
+        var saveToLater = document.querySelector("#save-to-later");
+        saveToLater.addEventListener('click', savetolater);
+        var sharepostButton = document.querySelector('#share');
+        var sharelink = document.querySelector('#share a');
+        sharepostButton.addEventListener('click',sharePost);
+
+        
+        if(currentUser === undefined){
+          // sharepostButton.disabled = true;
+          // saveToLater.disabled = true;
+          // likebutton.disabled = true;
+          // sharelink.ClassName += "disableClick";
+        }
+
+        
+
+        function like(){
+        
+        if(currentUser){
+          
+            httpRequest = new XMLHttpRequest();
+            if (!httpRequest) {
+              alert('Giving up :( Cannot create an XMLHTTP instance');
+              return false;
+            }
+            httpRequest.onreadystatechange = likeRequest;
+            httpRequest.open('GET', '/posts/liked/' + '<%= post.slug %>');        
+            httpRequest.send();
+          
+          }
+         else {
+          document.querySelector("#message").innerHTML = "you need to log in to like this post";
+        }
+      }
+
+      function likeRequest(){
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              var respJson = JSON.parse(httpRequest.responseText)
+              console.log(respJson)
+              likesdisplay.innerHTML = respJson.likes;
+              messageDisplay.innerHTML = respJson.message;
+            } else {
+              alert('There was a problem with the request.');
+            }
+          }
+        }
+
+
+      function savetolater(){
+        httpRequest = new XMLHttpRequest();
+        if (!httpRequest) {
+          alert('Giving up :( Cannot create an XMLHTTP instance');
+          return false;
+        }
+        httpRequest.onreadystatechange = savetolaterRequest;
+        httpRequest.open('GET', '/savetolater/' + '<%= post.slug %>');        
+        httpRequest.send();
+      }
+        
+      function savetolaterRequest(){
+        if(currentUser){
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+          if (httpRequest.status === 200) {
+            var respJson = JSON.parse(httpRequest.responseText)
+            console.log(respJson);
+            messageDisplay.innerHTML = respJson.message;
+          } else {
+            alert('There was a problem with the request.');
+            }
+          }
+        } else {
+          document.querySelector("#message").innerHTML = "you need to log in to save to later this post";
+          
+        }
+      }
+
+      function sharePost(){
+        httpRequest = new XMLHttpRequest();
+        if (!httpRequest) {
+          alert('Giving up :( Cannot create an XMLHTTP instance');
+          return false;
+        }
+        httpRequest.onreadystatechange = sharePostRequest;
+        httpRequest.open('GET', '/sharepost/' + '<%= post.slug %>');        
+        httpRequest.send();
+      }
+
+      function sharePostRequest(){
+
+        if(currentUser){
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              var respJson = JSON.parse(httpRequest.responseText)
+              console.log(respJson);
+              
+            } else {
+              alert('There was a problem with the request.');
+              }
+          }
+        } else {
+          // document.querySelector("#message").innerHTML = "you need to log in to share this post ";
+        }
+
+      }
+
+      }
+      
+      
+
+      function findPostAndUser(){
+        
+        httpRequest = new XMLHttpRequest();
+        if (!httpRequest) {
+          alert('Giving up :( Cannot create an XMLHTTP instance');
+          return false;
+        }
+        httpRequest.onreadystatechange =  findPostAndUserRequest;
+        httpRequest.open('GET', '/posts/findPostIdAndUser/'+'<%= post.slug %>');        
+        httpRequest.send();
+      }
+
+      function findPostAndUserRequest(){
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              var respJson = JSON.parse(httpRequest.responseText)
+              currentPost = respJson.CurPost_id;
+              currentUser = respJson.curuser;
+              console.log(currentPost, currentUser)
+            } else {
+              alert('There was a problem with the request.');
+            }
+          }
+      }
+
+      
+  </script>
+
+
+
+</body>
+<!-- <script src="/javascripts/likebtn.js"></script> -->
+</html>
