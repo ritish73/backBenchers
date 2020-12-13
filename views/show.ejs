@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  
   <h1> <%= post.title %> </h1>
   <h3> <%= post.publish_date %> </h3> 
   <h5> published by <%= post.author.username %></h5>
@@ -44,17 +43,7 @@
         saveToLater.addEventListener('click', savetolater);
         var sharepostButton = document.querySelector('#share');
         var sharelink = document.querySelector('#share a');
-        sharepostButton.addEventListener('click',sharePost);
-
-        
-        if(currentUser === undefined){
-          // sharepostButton.disabled = true;
-          // saveToLater.disabled = true;
-          // likebutton.disabled = true;
-          // sharelink.ClassName += "disableClick";
-        }
-
-        
+        sharepostButton.addEventListener('click',sharePost);  
 
         function like(){
         
@@ -162,12 +151,12 @@
         httpRequest.send();
       }
 
-      function findPostAndUserRequest(){
+      async function findPostAndUserRequest(){
           if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
               var respJson = JSON.parse(httpRequest.responseText)
-              currentPost = respJson.CurPost_id;
-              currentUser = respJson.curuser;
+              currentPost = await respJson.CurPost_id;
+              currentUser = await respJson.curuser;
               console.log(currentPost, currentUser)
             } else {
               alert('There was a problem with the request.');

@@ -29,14 +29,10 @@ var postSchema = new mongoose.Schema({
   isReviewedByAuditor: {type: Boolean, default: false},
   filename: {type: String},
   author: {
-    id:{
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
-    },
-    username: {
-      type: String
-    }
   },
+  authorName: String,
   publish_date: {
     type: String, 
     default: Date.now

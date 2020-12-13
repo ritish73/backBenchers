@@ -124,6 +124,29 @@ form.sign-in-form {
   color: black;
 }
 
+/* #input-file input[type="file"]{
+  outline: none;
+  border: none;
+  background: none
+} */
+
+.option
+{
+  line-height: 40px;
+  width: 375px;
+  border-radius: 55px;
+  padding: 0 50px 0 22px;
+  font-size: 16px;
+  color: black;
+  height: 55px;
+  outline: none;
+  overflow: hidden;
+  font-weight: 600;
+  margin-top: 5px;
+
+}
+
+
 .input-field input::placeholder, input::placeholder{
   color: black;
   font-weight: 500;

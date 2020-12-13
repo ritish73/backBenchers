@@ -1,13 +1,274 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BackBenchers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" href="/stylesheets/dashboard_css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    
+    
+    <title>BackBenchers</title>
 </head>
 <body>
-  <h1>welcome to dashboard of Mr.<%=currentUser.username%></h1>
-  <p><%=JSON.stringify(currentUser)%> is logged in!</p>
-  <a href="/myposts">go to my articles</a>
+  
+    <input type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+
+        <div class="sidebar-header">
+            <h3 class="brand">
+              
+                <span>BACKBENCHERS</span>
+            </h3>
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+        
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/aboutus">
+                        <span class="ti-face-smile"></span>
+                        <span>About us</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/contactus">
+                        <span class="ti-mobile"></span>
+                        <span>Contact us</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/blogs">
+                        <span class="ti-book"></span>
+                        <span>Blogs</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/logout">
+                        <span class="ti-settings"></span>
+                        <span>logout</span>
+                    </a>
+                </li>
+                    
+            </ul>
+        </div>
+    </div>
+
+        <div class="main-content">
+
+            <header>
+                <div class="search-wrapper">
+                    <img class="personal-img" src="/images/final_2.png" alt="" height="40px" width="40px">
+                </div>
+                <p><%=message%></p>
+                <div class="social-icons">
+
+                    <!-- <span class="ti-bell"></span>
+                    <span class="ti-comment"></span> -->
+                    <span class="name-dash"><a href="/dashboard">logged in as <%=currentUser.username%></a></span>
+                    <div></div>
+                </div>
+            </header>
+
+            <main>
+
+                <h2 class="dash-title">Overview</h2>
+
+                <div class="dash-cards">
+
+                    <div class="card-single">
+                        <div class="card-body">
+                            <span class="ti-write"></span>
+                            <div>
+                                <h5>Total number of articles</h5>
+                                <h4><%=articlesCount%></h4>
+                            </div> 
+                        </div>
+                        <div class="card-footer">
+                            <a href="/showAllArticles">View all</a>
+                        </div>
+                    </div>
+
+                    <div class="card-single">
+                        <div class="card-body">
+                            <span class="ti-plus"></span>
+                            <div>
+                                <h5>Total subscribers</h5>
+                                <h4><%=followersCount%></h4>
+                            </div> 
+                        </div>
+                        <div class="card-footer">
+                            <a href="/showAllFollowers">View all</a>
+                        </div>
+                    </div>
+
+                    <div class="card-single">
+                        <div class="card-body">
+                            <span class="ti-eye"></span>
+                            <div>
+                                <h5>Total number of likes</h5>
+                                <h4><%=totalLikes%></h4>
+                            </div> 
+                        </div>
+                        <div class="card-footer">
+                            <a href="">View all</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <section class="recent">
+                    <div class="activity-grid">
+                      <div class="activity-card">
+                        <h3 class="heading-top" id="ending">PERSONAL INFO</h3>
+
+                        <form action="/updateUser" method="POST" class="sign-in-form">
+
+
+                            <!-- <h2 class="title">Personal info</h2> -->
+                            <h3>Username</h3>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                            <input type="text" name="username" value="<%=currentUser.username%>" required >
+                            </div>
+
+                            <h3>Channel name</h3>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                            <input type="text" name="fullName" value="<%=currentUser.fullName%>" required>
+                            </div>
+
+                            <h3>Email address</h3>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                            <input type="text" name="email" value="<%=currentUser.email%>" required>
+                            </div>
+        
+                            <h3>Password</h3>
+                            <div class="input-field">
+                                <!-- <i class="fas fa-lock"></i>
+                            <input type="password" value="<%=currentUser.fullName%>"> -->
+
+                            <span class="R-button"><a href="/forgot">Reset password</a></span>
+                           
+                            </div>
+
+                            <h3>Gender</h3>
+                            <select name="gender" class="option" required>
+                                <i class="fas fa-user-tie"></i>
+                                <option selected="selected"><%=currentUser.gender%></option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                                </select> 
+        
+                            <h3>Year of Birth</h3>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                            <input type="date" placeholder="Date of birth" name = "dob" value="<%=getdob%>" required>
+                            </div>
+
+                            <!-- <h3>Country</h3>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                            <input type="text" name="" id="">
+                           
+                            </div> -->
+                            
+                            <h3>Profession</h3>
+                            <select name="profession" class="option" id="" required>
+                            <i class="fas fa-user-tie"></i>
+                            <option disabled="disabled" selected="selected" value=""><%=currentUser.profession%></option>
+                            <option value="Self earning">Self earning</option>
+                            <option value="Student">Student</option>
+                            <option value="Others">Others</option>
+                            </select>  
+                            
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <button class="update-info" type="submit">Update info</button>
+                            
+                            </div>
+
+
+                            
+                        </form>
+
+                        <h3 class="heading-top">DELETE MY ACCOUNT</h3>
+                        <div class="delete-account">
+                            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero modi animi pariatur illum distinctio unde perferendis, alias laudantium consequatur omnis, voluptate, doloribus veniam officia ut? Laboriosam nulla reprehenderit debitis. Ex delectus quia illum harum ipsam, amet minima, et laborum esse iure iste dolore pariatur suscipit soluta atque distinctio ullam nulla eligendi impedit, iusto similique non optio perspiciatis! Non laborum distinctio, libero harum sit hic necessitatibus nobis, voluptate accusantium similique excepturi odio magni? Nesciunt repellendus nisi ipsum consequatur mollitia natus repellat quas asperiores consequuntur quis odit voluptatum omnis et, molestias molestiae.</h4>
+                            <button class="delete-button">Delete my account</button>
+                        </div>
+                    </div>
+
+                    <div class="summary">
+                        <div class="summary-card">
+                            <div class="summary-single">
+                                <span class="ti-name"></span>
+                                <div>
+                                    <h5><%=currentUser.fullName%></h5>
+                                    <small>Channel name</small>
+                                </div>
+                            </div>
+
+                            <div class="summary-single">
+                                <span class="ti-file"></span>
+                                <div>
+                                    <h5><a href="/showSavedArticles"><%=savedArticlesCount%></a></h5>
+                                    <small>Saved for later posts</small>
+                                </div>
+                            </div>
+
+                            <div class="summary-single">
+                                <span class="ti-share"></span>
+                                <div>
+                                    <h5><a href="/showSharedArticles"><%=sharedArticlesCount%></a></h5>
+                                    <small>No. of post shared</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="birthday-card">
+                            <div class="bday-info">
+                                <h5>Publish your articles</h5>
+                                <div>
+                                  <a href="/publish">
+                                    <button>
+                                        <span>
+                                            click here
+                                        </span>
+                                    </button>
+                                  </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="image-dash">
+                            <img class="dash-image-person" src="/images/97 (2) - Copy.png" alt="" height="600px" width="270px">
+                        
+                        </div>
+
+
+                    </div>                    
+                    </div>
+                </section>
+
+
+
+            </main>
+        </div>
+    
+
+    
+    
 </body>
 </html>

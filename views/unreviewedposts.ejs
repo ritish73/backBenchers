@@ -6,7 +6,7 @@
   <title>BackBenchers</title>
 </head>
 <body>
-  <h1>unreviewed posts of all the subjects are here </h1>
+  <h1>unreviewed posts of all the subjects are here</h1>
   <% if(currentUser !== null && currentUser.role === "admin" ){ %>
     <p><%=currentUser.username%> with <%=currentUser.role%> role is logged in!</p>
   <br><br><br>
@@ -16,7 +16,7 @@
       <h1>Post Number is : <%=posts[i].postNumber%></h1>
       <h1> <%=posts[i].title%> </h1> 
       <h3> <%=posts[i].publishDay%> <%=posts[i].publish_date%> </h3>
-      <h3>published by <%=posts[i].author.username%></h3>
+      <h3>published by <%=posts[i].authorName%></h3>
       <h4>this post is of <%=posts[i].subject%></h4>
 
       <p><%-posts[i].sanitizedHtml%> </p>

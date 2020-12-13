@@ -23,11 +23,17 @@ var userSchema = new mongoose.Schema({
     trim: true 
   },
 
+  followers: [ {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
+
   number_of_followers: Number,
   is_prime_member: Boolean,
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   newsletterAccess: Boolean,
+  gender: String,
   profession: String,
   phoneNumber: String,
   fullName: String,
@@ -89,10 +95,17 @@ var userSchema = new mongoose.Schema({
 
   shared_posts: [
     {
-      postid: String,
-      count: {type: Number, default: 0}
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post"
     }
   ]
+
+
+  // {
+  //   postid: String,
+  //   count: {type: Number, default: 0}
+  // }
+
 
 });
 userSchema.plugin(passportLocalMongoose);

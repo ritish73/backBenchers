@@ -1,6 +1,9 @@
   <%- include("./partials/header1.ejs") %>
   <link rel="stylesheet" href="/stylesheets/home-page.css">
   <%- include("./partials/header2.ejs") %>
+  <% if(message != undefined){%>
+  <p><%=message%></p>
+  <%}%>
   <section class="landing-page pin">
     <!--  
             

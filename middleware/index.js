@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 middlewareObj.isAdmin = function(req,res,next){
-  if(req.isAuthenticated() && req.user.role === 'admin'){
+  if(req.user.role === 'admin'){
     return next();
   }
   else{
@@ -18,7 +18,7 @@ middlewareObj.isAdmin = function(req,res,next){
 }
 
 middlewareObj.isAuditor = function(req,res,next){
-  if(req.isAuthenticated() && (req.user.role === 'auditor' || req.user.role === 'admin') ){
+  if(req.user.role === 'auditor' || req.user.role === 'admin'){
     return next();
   }
   else{
@@ -26,13 +26,13 @@ middlewareObj.isAuditor = function(req,res,next){
   }
 }
 
-middlewareObj.isLoggedIn = function (req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/register_or_login");
-}
 
+// middlewareObj.isLoggedIn = function (req, res, next){
+// 	if(req.isAuthenticated()){
+// 		return next();
+// 	}
+// 	res.redirect("/register_or_login");
+// }
 
 middlewareObj.partitionTrending = function(copyOfPosts, s, e){
   var pivot = copyOfPosts[s].actualViews;
@@ -996,6 +996,53 @@ middlewareObj.helperFacebookAuth = async (accessToken, refreshToken, profile, do
 }
 
 
+middlewareObj.addFollower = async (res,req)=>{
+  console.log("comeee")
+  // find the author
+  return new Promise(async (resolve)=>{
+    User.findOne({username : req.params.authname}).populate('followers').exec(async (err,founduser)=>{
+      if(err) res.send(err);
+      else{
+        // console.log("user.followers.length : ", founduser.followers.length , req.user._id, founduser.followers[8]._id)
+        for(var i=0; i<founduser.followers.length; i++){
+          // console.log(req.user._id, founduser.followers[i]._id)
+          if(req.user._id.equals(founduser.followers[i]._id)){
+            resolve("you have already followed this author")
+            return;
+          }
+        }
+        // push current user to its follower list
+        await founduser.followers.push(req.user)
+        await founduser.save();
+        resolve("you are now following this author")
+      }
+    })
+
+  })
+  
+  
+}
+
+
+middlewareObj.sharePost = async (req)=>{
+  var post = await Post.findOne({slug: req.params.slug});
+  await User.findById(req.user._id).populate('shared_posts').exec(async (err,user)=>{
+    if(err) res.send(err);
+    else{
+
+      for(var i=0; i<user.shared_posts.length; i++){
+        console.log(post._id , user.shared_posts[i]._id)
+        if(post._id.equals(user.shared_posts[i]._id)){
+          console.log("already shared")
+          return;
+        }
+      }
+      await user.shared_posts.push(post)
+      await user.save();
+    }
+  })
+  
+}
 
 
 

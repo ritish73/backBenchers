@@ -3,6 +3,7 @@ var router  = express.Router();
 var Post = require('../models/post.js');
 var User = require('../models/user.js');
 const middlewareObj = require("../middleware/index");
+const auth = require("../middleware/auth");
 var Trending = require('../models/trending.js');
 var Popular = require('../models/popular.js');
 var Recommended = require('../models/recommended.js');  
@@ -43,15 +44,15 @@ router.get("/",(req,res)=>{
 
 })
 
-router.get("/publish-options",(req,res)=>{
+router.get("/publish-options", auth, (req,res)=>{
     res.render("publish2");
 })
 
-router.get("/publish-personal-info",(req,res)=>{
+router.get("/publish-personal-info", auth, (req,res)=>{
     res.render("publish3"); 
 })
 
-router.post("/additional-info/written" , middleware.isLoggedIn , (req,res)=>{
+router.post("/additional-info/written" , auth , (req,res)=>{
     
     console.log("inside post rote of creating new post");
 
@@ -78,8 +79,8 @@ router.post("/additional-info/written" , middleware.isLoggedIn , (req,res)=>{
         newpost.content = req.body.post.content;
         newpost.subject = req.body.post.subject;
         newpost.publish_date = middleware.convertDate().toString();
-        newpost.author.id = req.user._id;
-        newpost.author.username = req.user.username;
+        newpost.author = req.user;
+        newpost.authorName = req.user.username;
         newpost.publishDay = moment().format('dddd');
         newpost.postNumber = countTotalArticles+1;
         Post.create(newpost, function(err, post){
@@ -95,8 +96,11 @@ router.post("/additional-info/written" , middleware.isLoggedIn , (req,res)=>{
                 user.save((err,user)=>{
                 if(err) console.log(err)
                 else {
-                    // console.log(user)    
-                    res.redirect("/publish/publish-personal-info");
+                    if(req.user.add_info === false){
+                        res.redirect("/publish/publish-personal-info");
+                    } else {
+                        res.redirect("/");
+                    }
                 }
                 })  
             }
@@ -108,7 +112,7 @@ router.post("/additional-info/written" , middleware.isLoggedIn , (req,res)=>{
    
 })
 
-router.post("/additional-info/uploaded", upload.single("document") , (req,res,next)=>{
+router.post("/additional-info/uploaded", auth , upload.single("document") , (req,res,next)=>{
     var uid = req.user.bb_id;
     var file = req.file;
     var count = ()=>{
@@ -129,8 +133,8 @@ router.post("/additional-info/uploaded", upload.single("document") , (req,res,ne
         newpost.content = " to be edited by auditor______________";
         newpost.subject = req.body.post.subject;
         newpost.publish_date = middleware.convertDate().toString();
-        newpost.author.id = req.user._id;
-        newpost.author.username = req.user.username;
+        newpost.author = req.user;
+        newpost.authorName = req.user.username;
         newpost.publishDay = moment().format('dddd');
         newpost.postNumber = countTotalArticles+1;
         newpost.filename = uid + "_" + Date.now() +"_"+ file.originalname;
@@ -148,7 +152,12 @@ router.post("/additional-info/uploaded", upload.single("document") , (req,res,ne
                 if(err) console.log(err)
                 else {
                     // console.log(user)    
-                    res.redirect("/publish/publish-personal-info");
+                    if(req.user.add_info === false){
+                        res.redirect("/publish/publish-personal-info");
+                    } else {
+                        res.redirect("/dashboard");
+                    }
+                    
                 }
                 })  
             }
@@ -159,7 +168,7 @@ router.post("/additional-info/uploaded", upload.single("document") , (req,res,ne
     count();
 })
 
-router.post("/personal-info",(req,res)=>{
+router.post("/personal-info", auth ,(req,res)=>{
     console.log(req.body);
     if(req.user){
         User.findById(req.user._id, (err,user)=>{
@@ -168,8 +177,10 @@ router.post("/personal-info",(req,res)=>{
                 user.profession = req.body.info.profession;
                 user.phoneNumber = req.body.info.phoneNumber;
                 user.dob = req.body.info.date;
+                user.gender = req.body.info.gender;
                 user.fullName = req.body.info.name;
                 user.add_info = true;
+                // user.role = 'author';
                 user.save((err,u)=>{
                     if(err) console.log(err)
                     else{
@@ -180,17 +191,17 @@ router.post("/personal-info",(req,res)=>{
         })
     }
     var message = "your post will be audited within 2-3 business days and you will get notified when your post is published";
-    res.redirect("/?message=message");
+    res.redirect("/?message="+message);
 })
 
 
 router.get("/download", (req,res)=>{
     let  file = req.query.file;
-    var pathoffolder = path.parse(__dirname);   
-    const filepath = path.join(pathoffolder.dir,'public/uploads/data/');
+    // var pathoffolder = path.parse(__dirname);   
+    // const filepath = path.join(pathoffolder.dir,'public/uploads/data/');
     const filename = `${file}`
-    console.log(filepath ,filename);
-    var data = fs.readFileSync("../public/uploads/data/"+filename);
+    console.log(filename);
+    var data = fs.readFileSync("./public/uploads/data/"+filename);
    
     // var fileshow = fs.createReadStream('./public/uploads/data/'+filename);
     // res.download(filepath, filename);

@@ -8,6 +8,7 @@
     <title>personal info</title>
 </head>
 <body>
+    <h2>to become an author you need to fill this information or your article will not be posted</h2>
 
     <div class="container">
 
@@ -45,11 +46,20 @@
                     <input type="date" name="info[date]" placeholder="Date of birth">
                     </div>
                     
-                    <div class="gender">
-                    <input class="gen-btns" type="radio" name="info[gender]">Male
-                    <input  class="gen-btns" type="radio" name="info[gender]">Female
-                    <input  class="gen-btns" type="radio" name="info[gender]">others
-                </div>
+                <!-- <div class="gender">
+                    <input class="gen-btns" type="radio" name="gen">Male
+                    <input  class="gen-btns" type="radio" name="gen">Female
+                    <input  class="gen-btns" type="radio" name="gen">others
+                </div> -->
+
+
+                <select name="info[gender]" class="option" id="">
+                    <i class="fas fa-user-tie"></i>
+                <option disabled="disabled" selected="selected" value="">gender</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="Others">Others</option>
+                </select>  
 
                 <div class="input-field">
                     <i class="fas fa-address-book"></i>

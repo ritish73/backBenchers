@@ -1,7 +1,9 @@
 <%- include("./partials/header1.ejs") %>
 <link rel="stylesheet" href="/stylesheets/business-economics.css">
 <%- include("./partials/header2.ejs") %>
+
     <header>
+
     <div class="top-horiz-bar">
         <div class="logo-section-in-bar">
             <a href="/">
@@ -27,7 +29,7 @@
             </a>
         </div>
 
-        <div class="dropdown">
+        <!-- <div class="dropdown">
                 <button  class="dr-arrow">
                     <i class="fas fa-caret-down"></i>
                 </button>
@@ -37,7 +39,7 @@
                     <a href="#">View my articles</a>
                     <a href="#">Sign-out</a>
                 </div> 
-            </div>
+            </div> -->
         </div>
         
     </div>
@@ -68,6 +70,7 @@
             <h2 class="side-box-heading-one">Trending</h2>
             <% for(var i=0;i<3;i++){ %>
                 <div class="sub-part-section">
+                    
                     <h2 class="title-side-box"><a href="/posts/<%=trendingPosts[i].post.subject%>/<%=trendingPosts[i].post.slug%>"><%=trendingPosts[i].post.title%></a></h2>
                     <div class="date-side-box">
                         <span><%=trendingPosts[i].post.publishDay%></span>
@@ -122,7 +125,7 @@
                         </div>
                         <div class="author-name">
                             <ul class="author-content">
-                                <li class="name-aut"><%= posts[i].author.username %>></li>
+                                <button onclick="addFollower(this)" getauthor="<%= posts[i].authorName %>" > <li class="name-aut"><%= posts[i].authorName %>></li></button>
                                 <button onclick="saveToLater(this)" getpost="<%=posts[i].slug%>" > <li class="save-to-later"><i class="fas fa-plus "></i></li></button>
                                
                             </ul>
@@ -132,7 +135,7 @@
                         <p class="blog-post__text"><%= posts[i].content.substring(0,120) %>...</p>
                         </div>
 
-                        <% if(currentUser && currentUser.role == "admin"){ %>
+                        <% if(currentUser && currentUser.role === "admin"){ %>
                             <form method="POST" action="/updateRecommended/<%=posts[i].slug%>/<%=posts[i].subject%>/<%=page%>">
                                 <span>push to recommended at what position: </span><input type="number" name="position">
                                 <button type="submit">push</button>
@@ -145,7 +148,8 @@
                         <ul class="btns-on-blogcard">
                             <!-- <li class="btns-blog"><i class="far fa-eye fa-2x "></i></li> -->
                             <li class="btns-blog"><i class="far fa-hand-peace fa-2x "></i></li>
-                            <li class="btns-blog"><i class="fas fa-share fa-2x "></i></li>
+                            <a href="https://api.whatsapp.com/send?text=<%=hostname%>/posts/engineering/<%= posts[i].slug %>" data-action="share/whatsapp/share" target="_blank"><button onclick="sharePost(this)" getpost="<%=posts[i].slug%>" > <li class="btns-blog"><i class="fas fa-share fa-2x "></i></li></button></a>
+                            
                         </ul>
                     </div>
                 </div>
@@ -168,7 +172,8 @@
                             </div>
                             <div class="author-name">
                                 <ul class="author-content">
-                                    <li class="name-aut"><%= posts[i+1].author.username %>></li>
+                                    <button onclick="addFollower(this)" getauthor="<%= posts[i+1].authorName %>" > <li class="name-aut"><%= posts[i+1].authorName %>></li></button>
+                                    
                                     <button onclick="saveToLater(this)" getpost="<%=posts[i+1].slug%>" > <li class="save-to-later"><i class="fas fa-plus "></i></li></button>
                                    
                                 </ul>
@@ -188,7 +193,7 @@
                             <ul class="btns-on-blogcard">
                                 <!-- <li class="btns-blog"><i class="far fa-eye fa-2x "></i></li> -->
                                 <li class="btns-blog"><i class="far fa-hand-peace fa-2x "></i></li>
-                                <li class="btns-blog"><i class="fas fa-share fa-2x "></i></li>
+                                <a href="https://api.whatsapp.com/send?text=<%=hostname%>/posts/engineering/<%= posts[i+1].slug %>" data-action="share/whatsapp/share" target="_blank"><button onclick="sharePost(this)" getpost="<%=posts[i+1].slug%>" > <li class="btns-blog"><i class="fas fa-share fa-2x "></i></li></button></a>
                             </ul>
                         </div>
                     </div>
@@ -362,7 +367,8 @@
                 
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
                         if (httpRequest.status === 200 ) {
-                            console.log(responseText)
+                            var resJson = JSON.parse(httpRequest.responseText)
+                            console.log(resJson.message);
                             console.log('saved to later')
                         } else {
                         alert('There was a problem with the request.');
@@ -370,6 +376,17 @@
                     }
                 }
 
+
+                async function addFollowerRequest(){
+                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                        if (httpRequest.status === 200 ) {
+                            var resJson = JSON.parse(httpRequest.responseText)
+                            console.log(resJson.message);
+                        } else {
+                        alert('There was a problem with the request.');
+                        }
+                    }
+                }
 
 
 
@@ -381,6 +398,19 @@
                             console.log('post deleted')
                         } else {
                         alert('There was a problem with the request.');
+                        }
+                    }
+                }
+
+
+                function sharePostRequest(){
+                
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200 ) {       
+                            var resJson = JSON.parse(httpRequest.responseText)
+                            console.log(resJson.message);
+                        } else {
+                            alert('There was a problem with the request.');
                         }
                     }
                 }
@@ -397,7 +427,7 @@
                    return false;
                  }
                  httpRequest.onreadystatechange = saveLaterRequest;
-                 httpRequest.open('POST', '/savetolater/' + curPostSlug);        
+                 httpRequest.open('GET', '/savetolater/' + curPostSlug);        
                  httpRequest.send();
                } else {
                    console.log("you need to login to save this post")
@@ -419,6 +449,44 @@
                    console.log("you need to login to save this post")
                }
             }
+
+            async function addFollower(e){
+                if(currentUser){
+                    var authname = await e.getAttribute('getauthor');
+                    
+                    console.log("authname : ", authname);
+                    httpRequest = new XMLHttpRequest();
+                    if(!httpRequest){
+                        alert('Giving up :( Cannot create an XMLHTTP instance')
+                        return false;
+                    }
+                    httpRequest.onreadystatechange = addFollowerRequest;
+                    httpRequest.open('GET', '/addfollower/' +authname);
+                    httpRequest.send();
+                } else {
+                    console.log("you need to login to follow an author")
+                    var message = "you need to login first to follow an author"
+                    window.location = '/register_or_login/?message='+message;
+                }
+            }
+
+            async function sharePost(e){
+                if(currentUser){
+                    var curPostSlug = e.getAttribute('getpost');  
+                    
+                    httpRequest = new XMLHttpRequest();
+                    if(!httpRequest){
+                        alert('Giving up :( Cannot create an XMLHTTP instance')
+                        return false;
+                    }
+                    httpRequest.onreadystatechange = sharePostRequest;
+                    httpRequest.open('GET', '/sharePost/' +curPostSlug);
+                    httpRequest.send();
+                } else {
+                    console.log("you need to login to share this post")
+                }
+            }
+
          </script>
 
 <script>

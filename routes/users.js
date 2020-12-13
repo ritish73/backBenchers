@@ -1,5 +1,5 @@
 var express = require("express");
-
+var moment = require("moment");
 var FacebookStrategy = require("passport-facebook").Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 var router  = express.Router();
@@ -15,11 +15,18 @@ const Popular = require("../models/popular.js");
 const Recommended = require("../models/recommended.js");
 const middlewareObj = require("../middleware/index.js");
 const auth = require("../middleware/auth.js");
+const check = require("../controllers/checkAuthcontroller");
+const dashboardObj = require("../controllers/dashboardcontroller.js");
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken");
 const ejsLint = require('ejs-lint');
-router.get("/" , auth ,function(req, res){
-  console.log("all user ids :", "google_id : ",req.user.google_id," fb_id : ",req.user.fb_id," bb_id : ",req.user.bb_id);
+router.get("/" , function(req, res){
+  console.log("in home : ",req.user)
+  var message=undefined;
+  if(req.query.message){
+    message = req.query.message;
+  }
+  // console.log("all user ids :", "google_id : ",req.user.google_id," fb_id : ",req.user.fb_id," bb_id : ",req.user.bb_id);
   var obj = new Object();
   console.log("req.user and req.is authenticated  : " ,req.isAuthenticated(), req.user )
   var call  = async function(){
@@ -43,6 +50,7 @@ router.get("/" , auth ,function(req, res){
       cpopularpost: cpopularpost,
       epopularpost: epopularpost,
       pdpopularpost: pdpopularpost,
+      message: message
       // async: true
     }
     
@@ -69,7 +77,7 @@ router.get("/" , auth ,function(req, res){
        }
      })
   console.log("user is successfully serialized in home page")
-  console.log(req.user.tree)
+  console.log(req.user)
   
 });
 
@@ -82,8 +90,101 @@ router.get("/privacyPolicy", function(req, res){
   res.render("about");
 });
 
-router.get("/dashboard", (req,res)=>{
-  res.render("dashboard")
+router.get("/blogs",(req,res)=>{
+  res.render('allblogspage')
+})
+
+router.get("/showAllArticles", auth,  async (req,res)=>{
+  var getArticles;
+  await dashboardObj.getTotalArticles(req)
+  .then((posts)=>{
+    getArticles = posts;
+  })
+  
+  res.render('showallarticlesofauthor',{posts: getArticles});
+})
+
+router.get("/showAllFollowers", auth,  async (req,res)=>{
+  var getFollowers;
+  await dashboardObj.getTotalFollowers(req)
+  .then((followers)=>{
+    console.log("followers : ..............", followers)
+    getFollowers = followers;
+  })
+  
+  res.render('showfollowers',{followers: getFollowers});
+})
+
+
+router.get("/showSavedArticles", auth,  async (req,res)=>{
+  var getSavedArticles;
+  await dashboardObj.getSavedArticles(req)
+  .then((SavedArticles)=>{
+    console.log("SavedArticles : ..............", SavedArticles)
+    getSavedArticles = SavedArticles;
+  })
+  
+  res.render('showSavedArticles',{savedArticles: getSavedArticles});
+})
+
+
+
+router.get("/showSharedArticles", auth,  async (req,res)=>{
+  var getSharedArticles;
+  await dashboardObj.getSharedArticles(req)
+  .then((SharedArticles)=>{
+    console.log("SharedArticles : ..............", SharedArticles)
+    getSharedArticles = SharedArticles;
+  })
+  
+  res.render('showSharedArticles',{sharedArticles: getSharedArticles});
+})
+
+
+router.get("/dashboard", auth, async (req,res)=>{
+  // for users who logged in with google or fb handle accordingly
+  console.log("req.user : ", req.user)
+  var articlesCount;
+  if(req.user.role === 'user') articlesCount = 0;
+  else articlesCount = req.user.posts.length;
+
+  var followersCount;
+  if(req.user.role === 'user') followersCount = 0;
+  else followersCount = req.user.followers.length;
+
+
+  var getTotalNumberOfLikes;
+  await dashboardObj.getTotalNumberOfLikes(res,req)
+  .then((likes)=>{
+    getTotalNumberOfLikes = likes;
+  })
+
+
+  // get array of articles saved
+  var savedArticlesCount; 
+  savedArticlesCount = req.user.saved_for_later.length;
+  //get number of shared posts
+  var sharedArticlesCount; 
+  sharedArticlesCount = req.user.shared_posts.length;
+
+  var getdob = moment(req.user.dob).format(moment.HTML5_FMT.DATE);
+  // var year = req.user.dob.toString().substring(0,4);
+  // var month = req.user.dob.toString().substring(0,4);
+  // var day
+  // console.log(getTotalArticles, getTotalSubscribers, getTotalNumberOfLikes)
+  var message = '';
+  if(req.query.message){
+    message = req.query.message
+  }
+  res.render("dashboard",{
+    articlesCount: articlesCount,
+    followersCount: followersCount,
+    totalLikes: getTotalNumberOfLikes,
+    savedArticlesCount: savedArticlesCount,
+    sharedArticlesCount: sharedArticlesCount,
+    getdob: getdob,
+    message: message
+  })
 })
 
 router.get('/myposts',(req,res)=>{
@@ -101,7 +202,7 @@ router.get('/myposts',(req,res)=>{
   })
 })
 
-router.get('/findUser', (req,res)=>{
+router.get('/findUser', auth, (req,res)=>{
   var CurrentUser
   console.log("request made by ajax to find user")
   if(req.user === null){
@@ -111,13 +212,29 @@ router.get('/findUser', (req,res)=>{
   }
 })
 
-router.get("/savetolater/:slug", (req,res)=>{
+router.get('/addFollower/:authname', auth , async (req,res)=>{
+  console.log("req.params.authname = " + req.params.authname)
+  console.log("hhhhhhhhhhhhhhhhh")
+  // add currentuser to follower list of this author
+  await middlewareObj.addFollower(res,req)
+  .then((message)=>{
+    res.json({"message" : message})
+  })
+  
+})
+
+router.get('/sharePost/:slug', auth, async (req,res)=>{
+  await middlewareObj.sharePost(req);
+  res.json({"message" : "you have shatred this post"})
+})
+
+router.get("/savetolater/:slug", check ,(req,res)=>{
   console.log("request made")
   console.log(req.user)
     Post.findOne({slug: req.params.slug}, (err,foundpost)=>{
       if(err) console.log(err)
       else if(req.user){
-        User.findById(req.user._id).populate("saved_for_later").exec(function(err,user){
+        User.findById(req.user._id).populate("saved_for_later").exec(async function(err,user){
           if(err) console.log(err)
           else {
             
@@ -134,8 +251,8 @@ router.get("/savetolater/:slug", (req,res)=>{
   
             if(!ispushed){
               console.log("post pushed to save to later posts of : " + req.user.username)
-              user.saved_for_later.push(foundpost);
-              user.save((err,user)=>{
+              await user.saved_for_later.push(foundpost);
+              await user.save((err,user)=>{
                 if(err) console.log(err)
                 else {
                   console.log("after length: " + user.saved_for_later.length)
@@ -168,7 +285,7 @@ passport.use(new FacebookStrategy(
   {
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    callbackURL: "http://localhost/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)', 'email']
   }, 
   function(accessToken, refreshToken, profile, done) {
@@ -178,9 +295,18 @@ passport.use(new FacebookStrategy(
 router.get("/auth/facebook", passport.authenticate('facebook',{ scope:'email'}));
 
 router.get("/auth/facebook/callback",passport.authenticate('facebook',{
-  successRedirect: "/",
   failureRedirect: "/register_or_login?message=an error occured while authentication with facebook'"
-})
+}), async(req,res)=>{
+  if(req.user){
+    if(req.user.fb_id) {
+     res.cookie('_fb_token' ,req.user.fb_id);
+    } else if(req.user.google_id){
+      res.cookie('_google_token', req.user.google_id)
+    }
+  }
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  }
 )
 
 
@@ -191,7 +317,7 @@ router.get("/auth/facebook/callback",passport.authenticate('facebook',{
 passport.use(new GoogleStrategy({
   clientID: "562343987437-hhntpe0uh3qt19lgca4shh8fttrvgkpv.apps.googleusercontent.com",
   clientSecret: "aaPbLLz1nanGc2nQoOe07PEh",
-  callbackURL: "http://localhost:3000/google/callback"
+  callbackURL: "http://localhost/google/callback"
 },
 // api key AIzaSyCn8rZMwbOxiTAU08ObK9dFPuz-p53PbMU
 function(accessToken, refreshToken, profile, done) {
@@ -206,8 +332,13 @@ router.get('/google',passport.authenticate('google', { scope: ['profile', 'email
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/register_or_login?message=an error occured while authentication with google' }),
   function(req, res) {
 
-    
-
+    if(req.user){
+     if(req.user.fb_id) {
+      res.cookie('_fb_token' ,req.user.fb_id);
+    } else if(req.user.google_id){
+      res.cookie('_google_token', req.user.google_id)
+    }
+  }
     // Successful authentication, redirect home.
     res.redirect('/');
   });
@@ -339,7 +470,7 @@ router.post("/register",(req,res)=>{
 router.post("/login" , async (req,res)=>{
   try{
     
-    const token = req.cookies.bearer_token;
+    const token = await req.cookies.bearer_token;
     // console.log("token from cookiee : ", token);
     const user = await User.findByCredentials(req.body.username, req.body.password);
     console.log(user)
@@ -357,25 +488,43 @@ router.post("/login" , async (req,res)=>{
         // create token
         const newtoken = await user.generateAuthToken();
         console.log("token: ", newtoken);
-        res.cookie('bearer_token', newtoken,{
+        await res.cookie('bearer_token', newtoken,{
           httpOnly: true,
           path: '/'
         });
+        req.user = user;
         res.status(200).redirect('/')
       } else{
-        // verify token
-        console.log('token already present')
-        console.log(token);
-        const decoded = await jwt.verify(token, 'thisisjwtsecret');
-        console.log("decoded" ,decoded)
-        const userwithtoken = await User.findOne({_id  : decoded._id, 'tokens.token': token});
-        console.log( "userwithtoken : ",userwithtoken)
-        if(!userwithtoken){
-          throw new Error('user was not found with jwt token in the cookie');
-        } else{
-          console.log('token verified')
-          res.redirect('/')
+        // first check that is that token of the same user who provided credits
+        if(token in user.tokens){
+          console.log("token in user.tokens.token")
+          // verify token
+          console.log('token already present')
+          console.log(token);
+          const decoded = await jwt.verify(token, 'thisisjwtsecret');
+          console.log("decoded" ,decoded)
+          const userwithtoken = await User.findOne({_id  : decoded._id, 'tokens.token': token});
+          console.log( "userwithtoken : ",userwithtoken)
+          if(!userwithtoken){
+            throw new Error('user was not found with jwt token in the cookie');
+          } else{
+            req.user = await userwithtoken;
+            console.log('token verified')
+            res.redirect('/')
+          }
+        } else {
+          // create token for this user and delete previous token from the cookie
+          const newtoken = await user.generateAuthToken();
+          console.log("token: ", newtoken);
+          await res.clearCookie('bearer_token');
+          await res.cookie('bearer_token', newtoken,{
+            httpOnly: true,
+            path: '/'
+          });
+          req.user = user;
+          res.status(200).redirect('/')
         }
+        
       } 
     } else{
       console.log('user not found with provided credentials');
@@ -391,24 +540,53 @@ router.post("/login" , async (req,res)=>{
 
 router.get("/logout", auth, async (req,res)=>{
   try{
-    
-    // console.log("tokens : ", req.user.tokens)
-    req.user.tokens = await req.user.tokens.filter((token)=>{
-      // console.log(" comparing tokens and deleting while logging out ",  token.token.localeCompare(req.token));
-      return token.token !== req.token;
-    });
-    await req.user.save((err,user)=>{
-      if(err) console.log(err)
-      else{
-        console.log("user was saved successfully after deleting the jwt from the database");
+
+    if(req.user.google_id || req.user.fb_id){
+      console.log("logging out google or fb user");
+      if(req.user.google_id || req.cookies._google_token){
+        res.clearCookie('_google_token');
       }
-    });
-    res.clearCookie('bearer_token');
-    res.redirect('/') 
-  } catch(err){
-    res.status(500).send({"error": 'there was an error logging you out'});
-  }
+      if(req.user.fb_id || req.cookies._fb_token){
+        res.clearCookie('_fb_token');
+      }
+      res.clearCookie('connect.sid')
+      req.user = await null;
+      req.session = await null;
+      req.logout();
+      res.redirect("/register_or_login")
+    } else {
+      // console.log("tokens : ", req.user.tokens)
+      req.user.tokens = await req.user.tokens.filter((token)=>{
+        // console.log(" comparing tokens and deleting while logging out ",  token.token.localeCompare(req.token));
+        return token.token !== req.token;
+      });
+      await req.user.save((err,user)=>{
+        if(err) console.log(err)
+        else{
+          console.log("user was saved successfully after deleting the jwt from the database");
+        }
+      });
+      res.clearCookie('bearer_token');
+      res.redirect('/') 
+    }
+   } catch(err){
+      res.status(500).send({"error": 'there was an error logging you out'});
+    }
 })
+
+
+
+router.post("/updateUser", auth, async (req,res)=>{
+  var user = await User.findById(req.user._id);
+  user.username = req.body.username
+  user.fullName = req.body.fullName
+  user.email = req.body.email
+  user.gender = req.body.gender
+  user.profession = req.body.profession
+  await user.save()
+  res.redirect("/dashboard/?message=your account details are changed")
+})
+
 
 
 router.post("/login_old", passport.authenticate("local-user" , {

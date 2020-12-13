@@ -8,6 +8,8 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var mongoose = require("mongoose");
 var nodemailer = require('nodemailer');
 var flash = require('connect-flash')
+const auth = require('./middleware/auth.js');
+const check = require('./controllers/checkAuthcontroller.js');
 var methodOverride = require('method-override')
 var cookieParser = require("cookie-parser");
 const { v4: uuidv4 } = require('uuid');
@@ -50,6 +52,7 @@ var adminRoutes = require('./routes/admin.js');
 var publishRoutes = require('./routes/publish.js')
 const middlewareObj = require("./middleware");
 const { profile } = require("console");
+const router = require("./routes/publish.js");
 app.use(require("express-session")({
 	secret: "learners secret",
 	resave: false,
@@ -63,16 +66,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'))
 // passport.use('local-user', new LocalStrategy(User.authenticate()));
-passport.serializeUser(function(user, done) {
+passport.serializeUser(async function(user, done) {
   // console.log("user id in serialize user is")
   // console.log(user.id)
+  
+  
+  await console.log("inside serialize user\nall user ids :", "google_id : ",user.google_id," fb_id : ",user.fb_id," bb_id : ",user.bb_id);
   console.log("the user in serialize user is")
   console.log(user)
-  done(null, user);
+  await done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
-  done(null,user)
+passport.deserializeUser(async function(user, done) {
+  await console.log("inside deserialize user\nall user ids :", "google_id : ",user.google_id," fb_id : ",user.fb_id," bb_id : ",user.bb_id);
+  await done(null,user)
   
 });
 
@@ -80,12 +87,13 @@ app.use(express.static(__dirname + "/public"));
 app.use(flash())
 
 
-
+// app.use(auth);
+// app.use(check);
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user || null;
   res.locals.portnumber = PORT;
-  res.locals.hostname = process.env.APP_URL || `localhost:3000`;
-  // res.locals.hostname = `localhost:3000`;
+  res.locals.hostname = process.env.APP_URL || `localhost`;
+  // res.locals.hostname = `localhost`;
   next();
 });
 
@@ -135,6 +143,32 @@ function getUserId(req, res){
   return getAllCookies(req)['userId'];
 } 
 
-app.listen(PORT, HOST , function(){
+console.log(process.title)
+
+
+
+
+app.listen(80, HOST , async  function(){
   console.log("server has started at ", PORT, " with host as ", HOST);
 })
+
+
+
+
+// router.get('/save_me', async (req,res)=>{
+//   var newuser = {}
+//   newuser.username = 'rescue';
+//   newuser.email =  'rescue45@gmail.com';
+//   newuser.role = 'admin';
+//   var password ='pass'
+//   await User.register(new User(newuser), password, function(err, user){
+//     if(err) {
+//       res.send(err);
+//     } else{
+//       await passport.authenticate("local")(req,res,function(){
+//         res.redirect("/adminportal");
+//       });
+//     }
+//   });
+// })
+

@@ -38,8 +38,17 @@
                     <input type="text" name="post[title]" id="" placeholder="Topic of article">
                     </div>
 
-                    <textarea name="post[content]" id="" cols="46" rows="28" placeholder="type here.."></textarea>
-                    <input type="text" placeholder="subject" class="input-field-subject" name="post[subject]">
+                    <textarea name="post[content]" id="" cols="46" rows="18.5" placeholder="type here.."></textarea>
+
+                    <select name="info[profession]" class="option"  id="">
+                        <i class="fas fa-user-tie"></i>
+                        <option disabled="disabled" selected="selected" value="">Subject</option>
+                        <option value="business-economics">business-economics</option>
+                        <option value="commerce">commerce</option>
+                        <option value="engineering">engineering</option>
+                        <option value="personality-development">personality-development</option>
+                    </select>  
+                    <!-- <input type="text" placeholder="subject" class="input-field-subject" name="post[subject]"> -->
 
 
                     <input type="submit" value="submit" class="btn solid">
@@ -51,7 +60,7 @@
                     <h2 class="title">uplaod your article</h2>
                     <input type="text" name="post[title]" id="" placeholder="Topic of article">
                     <input type="text" placeholder="subject" class="input-field-subject" name="post[subject]">
-                    <input type="file" value="uplaod file here-->" class="btn solid" name="document">
+                    <input type="file" id="input-file" value="uplaod file here-->" class="btn solid" name="document">
                     <p>you can uplaod pdf or word file </p>
                     
                     <input type="submit" value="Submit" class="btn solid">
