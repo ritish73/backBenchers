@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/forgot-page-css1.css">
+    <link rel="stylesheet" href="/stylesheets/notification.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/final_2.png">
+        <link rel="stylesheet" href="/stylesheets/fontawesome-free-5.15.1-web/css/all.css">
+    <title>Forgot-user</title>
+</head>
+
+<style>
+nav img{
+    position: absolute;
+    height:70px;
+    width:70px;
+    top: 0px;
+    left: 0.7%;
+    z-index: 110;
+    cursor: pointer;
+
+}
+</style>
+
+<body>
+
+    <nav>
+        <a href="/"><img src="/images/final_2.png" alt="" class="logo-top" ></a>
+    </nav>
+
+
+  <% if(successmessage.length){ %>
+    <h3 class="flash_bg_color"><%=successmessage%></h3>
+<% } else { %>
+  <h3 class="flash_bg_color"><%=errormessage%></h3>
+<% } %>
+
+    <div class="container">
+
+        <div class="form-container">
+
+            <div class="signin-signup">
+
+                <form action="/forgotUsername" method="POST" class="sign-in-form">
+
+
+                    <h2 class="title">Forgot username?</h2>
+                    <div class="input-field">
+                        <i class="far fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Enter your email " required>
+                    
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn solid">
+                </form>
+
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <img src="/images/keys3-01.png" class="image" alt=""  >
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<% if(successmessage && successmessage.length>0){ %>
+<!-- <div class="alert alert-success alert-dismissible fade show" role="alert"> -->
+    <p class="showmessage"><%=successmessage %></p>
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> -->
+<% } %>
+
+<% if(errormessage && errormessage.length>0){ %>
+    <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert"> -->
+    <%errormessage%>
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div> -->
+<% } %>
+
+<% if(warningmessage && warningmessage.length>0){ %>
+<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert"> -->
+    <%= warningmessage %>
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div> -->
+<% } %>
+

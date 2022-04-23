@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="./1_logo.png" />
+    <title>queriies page</title>
+</head>
+<body>
+    <% query.forEach((q)=>{ %>
+        
+        <p><strong>query time : </strong><%=q.queryDate.toDateString()%> <%=q.queryDate.getHours()%>:<%=q.queryDate.getMinutes()%></p>
+        <p><strong>email : </strong><%=q.email%></p>
+        <p><strong>message : </strong><%=q.message%></p>
+        <br><br>
+
+    <% }) %>
+    
+</body>
+</html>

@@ -1,0 +1,2602 @@
+
+
+
+
+
+       @media screen and (max-width:1800px)
+       {
+        .article-content
+        {
+            height: auto;
+            width: 77rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 2.425em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 2em;
+       }
+
+       
+           .side-box
+           {
+               max-width: 450px;
+               min-width: 450px;
+               align-items: center;
+               justify-content: center;
+               right: 240px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 25px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 25px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 25px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 14.5px;
+               max-width: 460px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 13rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 955px;
+               font-size: 1.725em;
+               
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 290px;
+               height: 180px;  
+              margin-right: 32px;
+           }
+    
+           .similar-article-heading
+           {
+               width:138px;
+               font-size: 0.9em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 130px;
+               right:10px;
+           }
+    
+
+
+       }
+
+
+
+       @media screen and (max-width:1651px)
+       {
+        .article-content
+        {
+            height: auto;
+            width: 72rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 2.325em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.8em;
+       }
+
+       
+           .side-box
+           {
+               max-width: 430px;
+               min-width: 430px;
+               align-items: center;
+               justify-content: center;
+               right: 200px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 22px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 22px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 22px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 12.5px;
+               max-width: 460px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.5rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 870px;
+               font-size: 1.725em;
+               
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 280px;
+               height: 180px;  
+              margin-right: 15px;
+           }
+    
+           .similar-article-heading
+           {
+               width:138px;
+               font-size: 0.9em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 130px;
+               right:10px;
+           }
+    
+
+
+       }
+
+       @media screen and (max-width:1551px)
+       {
+        .article-content
+        {
+            height: auto;
+            width: 70rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 2.225em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.7em;
+       }
+
+       
+           .side-box
+           {
+               max-width: 400px;
+               min-width: 400px;
+               align-items: center;
+               justify-content: center;
+               right: 180px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 22px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 22px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 22px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 12.5px;
+               max-width: 460px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.5rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 840px;
+               font-size: 1.725em;
+               
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 180px;  
+              margin-right: 15px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.9em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 130px;
+               right:10px;
+           }
+    
+
+
+       }
+
+
+
+
+       
+
+
+
+       @media screen and (max-width:1441px)
+       {
+
+        .article-content
+        {
+            height: auto;
+            width: 65rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 2.025em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.8em;
+       }
+
+       
+           .side-box
+           {
+               max-width: 380px;
+               min-width: 380px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 21px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 21px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 21px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 12.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.3rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 780px;
+               font-size: 1.725em;
+               
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 255px;
+               height: 200px;  
+              margin-right: 12px;
+           }
+    
+           .similar-article-heading
+           {
+               width:108px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 160px;
+               right:10px;
+           }
+
+        /* .side-box
+           {
+               max-width: 380px;
+               min-width: 380px;
+               align-items: center;
+               justify-content: center;
+               right: 180px;
+           }
+
+           .blog-post
+           {
+               max-width:28rem ;
+               height: 34rem;
+           }
+
+           .table-all
+           {
+               grid-column-gap: 1.2rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.5rem;
+           } */
+
+
+       }
+
+
+       @media screen and (max-width:1331px)
+       {
+
+        .article-content
+        {
+            height: auto;
+            width: 60rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.925em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.7em;
+       }
+
+       
+           .side-box
+           {
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.3rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 720px;
+               font-size: 1.725em;
+               
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 250px;
+               height: 200px;  
+              margin-right: 10px;
+           }
+    
+           .similar-article-heading
+           {
+               width:108px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 160px;
+               right:10px;
+           }
+
+        /* .side-box
+           {
+               max-width: 380px;
+               min-width: 380px;
+               align-items: center;
+               justify-content: center;
+               right: 180px;
+           }
+
+           .blog-post
+           {
+               max-width:28rem ;
+               height: 34rem;
+           }
+
+           .table-all
+           {
+               grid-column-gap: 1.2rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.5rem;
+           } */
+
+
+       }
+
+
+       @media screen and (max-width:1218px)
+       {
+
+        .article-content
+        {
+            height: auto;
+            width: 71rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.925em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.7em;
+       }
+
+       
+           .side-box
+
+           {
+               display: none;
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.3rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 850px;
+               font-size: 1.725em;
+               
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 150px;  
+              margin-right: 15px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 115px;
+               right:10px;
+           }
+
+        /* .side-box
+           {
+               max-width: 380px;
+               min-width: 380px;
+               align-items: center;
+               justify-content: center;
+               right: 180px;
+           }
+
+           .blog-post
+           {
+               max-width:28rem ;
+               height: 34rem;
+           }
+
+           .table-all
+           {
+               grid-column-gap: 1.2rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.5rem;
+           } */
+
+
+       }
+
+
+
+       @media screen and (max-width:1024px)
+       {
+
+        .article-content
+        {
+            height: auto;
+            width: 61.5rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.925em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.7em;
+       }
+
+       
+           .side-box
+
+           {
+               display: none;
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.3rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 740px;
+               font-size: 1.725em;
+               
+           }
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 150px;  
+              margin-right: 0px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 115px;
+               right:10px;
+           }
+
+
+        /* .side-box
+           {
+               display: none;
+           }
+
+           .vertical-nav-bar
+           {
+               top: 70%;
+           }
+
+           .blog-post
+           {
+               max-width:28rem ;
+               height: 34rem;
+           }
+
+           .table-all
+           {
+               grid-column-gap: 0rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 12.5rem;
+               
+           }
+
+           .next-page
+           {
+               margin-left: 0px;
+               width: 800px;
+           }
+
+           .next-page span 
+           {
+               margin-left: 540px;
+           } */
+
+
+       }
+
+
+       @media screen and (max-width:900px)
+       {
+        .vertical-nav-bar
+        {
+            display: none;
+        }
+
+        .article-content
+        {
+            height: auto;
+            width: 57.5rem;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.925em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.7em;
+       }
+
+       
+           .side-box
+
+           {
+               display: none;
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 6.3rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 690px;
+               font-size: 1.725em;
+               
+           }
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 150px;  
+              margin-right: 0px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 115px;
+               right:10px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(2,1fr) ;
+           }
+
+
+       }
+
+
+       @media screen and (max-width:768px)
+       {
+
+        .vertical-nav-bar
+        {
+            display: none;
+        }
+
+        .article-content
+        {
+            height: auto;
+            width: 640px;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.925em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.7em;
+       }
+
+       
+           .side-box
+
+           {
+               display: none;
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 3rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 640px;
+               font-size: 1.725em;
+               
+           }
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 150px;  
+              margin-right: 0px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 115px;
+               right:10px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(2,1fr) ;
+           }
+
+
+        /* .article-content
+        {
+            height: auto;
+            width: 52.5rem;
+        }
+
+        .side-box
+           {
+               display: none;
+           }
+
+           .vertical-nav-bar
+           {
+               display: none;
+           }
+
+           .table-all
+           {
+               grid-template-columns: repeat(1,1fr);
+               grid-column-gap: 0rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 3rem;
+           }
+
+
+           .next-page
+           {
+               margin-left: 00px;
+               width: 640px;
+           }
+
+           .next-page span 
+           {
+               margin-left: 320px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(2,1fr) ;
+           }
+
+           .article-content
+           {
+               height: auto;
+               width: 640px; 
+           }
+
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+           }
+
+
+
+
+          .similar-articles .overall-heading
+       {
+           padding-left: 10px;
+           width: 640px;
+           margin-bottom: 20px;
+           
+       }
+
+       .similar-blog
+       {
+           position: relative;
+           width: 280px;
+           height: 150px;  
+          margin-bottom:15px;
+          padding: 0px 0px 0px 0px;
+          padding-bottom: 20px;
+          margin-right: 5px;
+       }
+
+       .similar-article-heading
+       {
+           width:135px;
+           height: 0px;
+           padding-right: 15px;
+       }
+
+       .similar-article-image
+       {
+            float: left;
+            height: 100%;
+       }
+
+      
+
+       .similar-button button
+       {
+           top: 110px;
+           right:10px;
+           margin-top: 5px;
+           cursor: pointer;
+       } */
+
+
+
+
+       }
+
+       @media screen and (max-width:701px)
+       {
+        .vertical-nav-bar
+        {
+            display: none;
+        }
+
+        .article-content
+        {
+            height: auto;
+            width: 540px;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.625em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.5em;
+       }
+
+       
+           .side-box
+
+           {
+               display: none;
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 1.5rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 540px;
+               font-size: 1.725em;
+               
+           }
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 150px;  
+              margin-right: 0px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 115px;
+               right:10px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(2,1fr) ;
+           }
+
+        /* .article-content
+        {
+            height: auto;
+            width: 400px;
+        } */
+
+        /* .article-content .article-heading-3p
+       {
+           
+           font-size: 1.725em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.6em;
+       }
+
+        .side-box
+           {
+               display: none;
+           }
+
+           .vertical-nav-bar
+           {
+               display: none;
+           }
+
+           .table-all
+           {
+               grid-template-columns: repeat(1,1fr);
+               grid-column-gap: 0rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 1.5rem;
+           }
+
+
+           .next-page
+           {
+               margin-left: 00px;
+               width: 640px;
+           }
+
+           .next-page span 
+           {
+               margin-left: 320px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(2,1fr) ;
+           }
+
+           .article-content
+           {
+               height: auto;
+               width: 640px; 
+           }
+
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+           }
+
+
+
+
+          .similar-articles .overall-heading
+       {
+           padding-left: 10px;
+           width: 640px;
+           margin-bottom: 20px;
+           
+       }
+
+       .similar-blog
+       {
+           position: relative;
+           width: 280px;
+           height: 150px;  
+          margin-bottom:15px;
+          padding: 0px 0px 0px 0px;
+          padding-bottom: 20px;
+          margin-right: 5px;
+       }
+
+       .similar-article-heading
+       {
+           width:135px;
+           height: 0px;
+           padding-right: 15px;
+       }
+
+       .similar-article-image
+       {
+            float: left;
+            height: 100%;
+       }
+
+      
+
+       .similar-button button
+       {
+           top: 110px;
+           right:10px;
+           margin-top: 5px;
+           cursor: pointer;
+       }
+
+ */
+
+
+       }
+
+
+
+       @media screen and (max-width:581px)
+       {
+        .vertical-nav-bar
+        {
+            display: none;
+        }
+
+        .article-content
+        {
+            height: auto;
+            width: 490px;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.525em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.4em;
+       }
+
+       
+           .side-box
+
+           {
+               display: none;
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 0.5rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 480px;
+               font-size: 1.725em;
+               
+           }
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 150px;  
+              margin-right: 0px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 115px;
+               right:10px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(2,1fr) ;
+           }
+
+
+
+       }
+
+
+       @media screen and (max-width:500px)
+       {
+        .vertical-nav-bar
+        {
+            display: none;
+        }
+
+        .article-content
+        {
+            height: auto;
+            width: 410px;
+        }
+
+        .article-content .article-heading-3p
+       {
+           
+           font-size: 1.525em;
+       }
+
+       .article-content .article-para-3p
+       {
+           font-size: 1.4em;
+       }
+       #channel-name
+       {
+           padding: 5px;
+           font-weight: 600;
+           margin-left: 50px;
+           margin-top: 15px;
+       }
+       #author-linkedin
+       {
+           margin: 0 5px;
+           padding: 0 5px;
+       }
+
+       #entity-save-subscribe
+       {
+           float: left;
+       }
+
+
+       
+           .side-box
+
+           {
+               display: none;
+               max-width: 340px;
+               min-width: 340px;
+               align-items: center;
+               justify-content: center;
+               right: 155px;
+           }
+
+           .two-of-3-heading
+           {
+               padding-top: 25px;
+           }
+   
+           
+           .three-of-3-heading
+           {
+               padding-top: 25px;
+               
+           }
+           
+           .side-box-heading-one
+           {
+               font-size: 19px;
+               max-width: 90px;
+           }
+   
+           
+           .side-box-heading-two
+           {
+               font-size: 19px;
+               max-width: 130px;
+           }
+   
+           
+           .side-box-heading-three
+           {
+               font-size: 19px;
+               max-width: 80px;
+           }
+   
+           .sub-part-section
+           {
+               font-size: 11.5px;
+               max-width: 440px;
+           }
+   
+           .date-side-box
+           {
+               margin-bottom: 10px;
+           }
+   
+           .date-side-box span
+           {
+               font-size: 14px;
+           }
+   
+           main
+           {
+               margin-bottom: 300px;
+           }
+   
+           .blog-post
+           {
+               width:55rem ;
+               height: 50rem;
+           }
+
+
+           .table-all
+           {
+               grid-column-gap: 1.3rem;
+           }
+
+           .all-engineering-articles
+           {
+               left: 0.5rem;
+           }
+
+           .similar-articles .overall-heading
+           {
+            
+               width: 410px;
+               font-size: 1.725em;
+               
+           }
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+           }
+    
+           .similar-blog
+           {
+               position: relative;
+               width: 270px;
+               height: 150px;  
+              margin-right: 0px;
+           }
+    
+           .similar-article-heading
+           {
+               width:128px;
+               font-size: 0.85em;
+           }
+    
+           .similar-article-image
+           {
+                border-radius: 5px;
+                float: left;
+                height: 100%;
+           }
+    
+          
+    
+           .similar-button button
+           {
+               position: relative;
+               top: 115px;
+               right:10px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(1,1fr) ;
+           }
+
+
+
+       }
+
+
+
+       @media screen and (max-width:426px)
+       {
+
+        .left .content img
+       {
+           padding-left: 20px;
+       }
+
+        .top-img2-logo
+        {
+            display: none;
+        }
+
+        .side-box
+           {
+               display: none;
+           }
+
+           .vertical-nav-bar
+           {
+               display: none;
+           }
+
+
+           .all-engineering-articles
+           {
+               left: 0.5rem;
+           }
+
+
+           .next-page
+           {
+               margin-left: 10px;
+               width: 370px;
+           }
+
+           .next-page span 
+           {
+               margin-left: 100px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(1,1fr) ;
+          }
+
+          .search-box:hover > .search-txt
+           {
+            width: 120px;
+            padding:2px;
+           }
+
+          .search-txt
+          {
+              font-size: 10px;
+        }
+
+
+        .article-content
+           {
+               height: auto;
+               width: 360px; 
+           }
+
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+           }
+
+
+
+
+          .similar-articles .overall-heading
+       {
+           padding-left: 10px;
+           width: 355px;
+           margin-bottom: 20px;
+           
+       }
+
+
+       .similar-blog
+       {
+           position: relative;
+           width: 250px;
+           height: 150px;  
+          margin-bottom:15px;
+          padding: 0px 0px 0px 0px;
+          padding-bottom: 20px;
+          margin-right: 5px;
+       }
+
+       .similar-article-heading
+       {
+           width:110px;
+           height: 0px;
+           padding-right: 15px;
+       }
+
+       .similar-article-image
+       {
+            float: left;
+            height: 100%;
+       }
+
+      
+
+       .similar-button button
+       {
+           top: 110px;
+           right:10px;
+           margin-top: 5px;
+           cursor: pointer;
+       }
+
+       #channel-name
+       {
+           padding: 3px;
+           font-weight: 600;
+           margin-left: 11px;
+           margin-top: 10px;
+       }
+
+       #author-linkedin
+       {
+           margin: 0 5px;
+           padding: 0 5px;
+       }
+
+       #entity-save-subscribe
+       {
+           float: left;
+       }
+
+       .logo-footer-img
+       {
+        border: none;
+       }
+
+       
+
+
+    }
+
+
+
+       @media screen and (max-width:376px)
+       {
+
+        .top-img2-logo
+        {
+            display: none;
+        }
+
+        .side-box
+           {
+               display: none;
+           }
+
+           .vertical-nav-bar
+           {
+               display: none;
+           }
+
+           .all-engineering-articles
+           {
+               left: 0.2rem;
+           }
+
+           .next-page
+           {
+               margin-left: 10px;
+               width: 350px;
+           }
+
+           .next-page span 
+           {
+               margin-left: 90px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(1,1fr) ;
+          }
+
+          .search-box:hover > .search-txt
+{
+    width: 120px;
+    padding:2px;
+}
+
+.search-txt
+{
+    font-size: 10px;
+}
+
+
+.article-content
+           {
+               align-items: center;
+               height: auto;
+               width: 315px; 
+           }
+
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+           }
+
+
+
+
+          .similar-articles .overall-heading
+       {
+           padding-left: 10px;
+           width: 310px;
+           margin-bottom: 20px;
+           
+       }
+
+
+       .similar-blog
+       {
+           position: relative;
+           width: 250px;
+           height: 150px;  
+          margin-bottom:15px;
+          padding: 0px 0px 0px 0px;
+          padding-bottom: 20px;
+          margin-right: 5px;
+       }
+
+       .similar-article-heading
+       {
+           width:110px;
+           height: 0px;
+           padding-right: 15px;
+       }
+
+       .similar-article-image
+       {
+            float: left;
+            height: 100%;
+       }
+
+      
+
+       .similar-button button
+       {
+           top: 110px;
+           right:10px;
+           margin-top: 5px;
+           cursor: pointer;
+       }
+
+       #channel-name
+       {
+           padding: 3px;
+           font-weight: 600;
+           margin-top: 10px;
+           margin-left: 11px;
+           
+       }
+
+       #author-linkedin
+       {
+           margin: 0 5px;
+           padding: 0 5px;
+       }
+
+       #entity-save-subscribe
+       {
+           float: left;
+       }
+
+       
+
+
+
+       }
+
+       @media screen and (max-width:320px)
+       {
+
+        .top-img2-logo
+        {
+            display: none;
+        }
+
+        .side-box
+           {
+               display: none;
+           }
+
+           .vertical-nav-bar
+           {
+               display: none;
+           }
+
+          
+
+           .all-engineering-articles
+           {
+               left: 0.1rem;
+           }
+
+
+           .next-page
+           {
+               margin-left: 10px;
+               width: 290px;
+           }
+
+           .next-page span 
+           {
+               margin-left: 20px;
+           }
+
+           .main-content
+           {
+               grid-template-columns:repeat(1,1fr) ;
+          }
+
+          .search-box:hover > .search-txt
+{
+    width: 80px;
+    padding:2px;
+}
+
+.name-aut
+{
+    margin-left: 13rem;
+}
+
+.save-to-later
+{
+    margin-left: 23rem;
+}
+
+.article-content
+           {
+               height: auto;
+               width: 291px; 
+           }
+
+
+           .all-griding
+           {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+           }
+
+
+
+
+          .similar-articles .overall-heading
+       {
+           padding-left: 10px;
+           width: 290px;
+           margin-bottom: 20px;
+           
+       }
+
+
+       .similar-blog
+       {
+           position: relative;
+           width: 250px;
+           height: 150px;  
+          margin-bottom:15px;
+          padding: 0px 0px 0px 0px;
+          padding-bottom: 20px;
+          margin-right: 5px;
+       }
+
+       .similar-article-heading
+       {
+           width:110px;
+           height: 0px;
+           padding-right: 15px;
+       }
+
+       .similar-article-image
+       {
+            float: left;
+            height: 100%;
+       }
+
+      
+
+       .similar-button button
+       {
+           top: 110px;
+           right:10px;
+           margin-top: 5px;
+           cursor: pointer;
+       }
+
+       #channel-name
+       {
+           padding: 3px;
+           font-weight: 600;
+           margin-top: 10px;
+           margin-left: 11px;
+           
+       }
+
+       #author-linkedin
+       {
+           margin: 0 5px;
+           padding: 0 5px;
+       }
+
+       #entity-save-subscribe
+       {
+           float: left;
+       }
+
+
+
+       }
+
+
+       
+      
+
+
+
+
+       
+

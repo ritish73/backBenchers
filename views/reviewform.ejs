@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/final_2.png">   
+     <title> review form</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data" action="/review">
+        <span>upload the image of reviewer </span>
+        <input type="file" placeholder="file upload" name="photo"><BR><br>
+        <input type="text" placeholder="designation" name="designation"><br><br>
+        <textarea name="content" cols="46" rows="18.5" placeholder="type here.."></textarea>
+        <div>
+          <input type="submit" value="submit">
+        </div>
+    </form>
+</body>
+</html>

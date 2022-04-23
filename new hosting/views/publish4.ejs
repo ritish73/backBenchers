@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="/stylesheets/notification.css">
+    <link rel="stylesheet" href="/stylesheets/publish3.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/final_2.png">
+    <title>Channel info</title>
+</head>
+<body>
+
+  
+
+    <div class="container">
+
+        <nav>
+       
+            <img src="/images/final_2.png" alt="" class="logo-top" >
+         
+        </nav>
+
+        <div class="form-container">
+
+            <div class="signin-signup">
+
+                <form action="/publish/publish-channel"  method="POST" class="sign-in-form">
+
+
+
+
+                                                        
+<% if(successmessage.length || errormessage.length){ %>
+    <div class="alert show showAlert">
+        <span class="fas fa-exclamation-circle"></span>
+        <% if(successmessage.length){ %>
+            <span id="success-message-color" class="msg-alert"><%=successmessage%></span>
+        <% } else if(errormessage.length) { %>
+            <span id="error-message-color" class="msg-alert"><%=errormessage%></span>
+        <% } %>
+        <div class="close-btn">
+          <span class="fas fa-times"></span>
+        </div>
+    </div>
+    <% } else{ %>
+        <div class="alert hide">
+            <span class="fas fa-exclamation-circle"></span>
+            <span class="msg-alert"></span>
+            <div class="close-btn">
+              <span class="fas fa-times"></span>
+            </div>
+        </div>
+    <% } %>
+
+
+
+                    <h2 class="title">Create your Channel</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                    <input type="text" name="channel" id="" placeholder="Channel name" maxlength = "10" minlength="1" required>
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                    <input type="text" name="linkedin" id="" placeholder="your LinkedIn profile link">
+                    </div>
+                    <!-- <p>(It's not compulsary)</p> -->
+
+                    <input type="submit" value="submit" class="btn solid">
+                </form>
+
+               
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <img src="/images/Untitled-2.png" class="image" alt="">
+            </div>
+
+        </div>
+    </div>
+    
+
+    
+    
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="/javascripts/pop-alert.js">  </script>
+
+</html>

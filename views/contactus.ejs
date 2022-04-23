@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="/stylesheets/notification.css" />
+    <link rel="stylesheet" href="/stylesheets/2nd-copy-dark.css">
+
+
+
+
+    <script>
+      $(document).ready(function(){
+        $(".profile .icon_wrap").click(function(){
+          $(this).parent().toggleClass("active");
+          $(".notifications").removeClass("active");
+        });
+  
+        $(".notifications .icon_wrap").click(function(){
+          $(this).parent().toggleClass("active");
+           $(".profile").removeClass("active");
+        });
+  
+        $(".show_all .link").click(function(){
+          $(".notifications").removeClass("active");
+          $(".popup").show();
+        });
+  
+        $(".close").click(function(){
+          $(".popup").hide();
+        });
+      });
+    </script>
+  
+
+
+
+
+
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="/stylesheets/contactus.css" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+
+
+
+    <header>
+
+      <div class="top-horiz-bar">
+          <div class="logo-section-in-bar">
+              <a href="/"><img class="top-img-logo" src="/images/final_2.png" alt="logo-pic"></a>
+              <a href="/"><img class="top-img2-logo" src="/images/5.png" alt="logo-pic" height="60rem" width="145rem"></a>
+              
+          </div>
+
+        
+  
+          </div>
+    
+
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+
+
+
+
+
+
+  <% if(successmessage.length || errormessage.length){ %>
+      <div class="alert show showAlert">
+          <span class="fas fa-exclamation-circle"></span>
+          <% if(successmessage.length){ %>
+              <span id="success-message-color" class="msg-alert"><%=successmessage%></span>
+          <% } else if(errormessage.length) { %>
+              <span id="error-message-color" class="msg-alert"><%=errormessage%></span>
+          <% } %>
+          <div class="close-btn">
+            <span class="fas fa-times"></span>
+          </div>
+      </div>
+      <% } else{ %>
+          <div class="alert hide">
+              <span class="fas fa-exclamation-circle"></span>
+              <span class="msg-alert"></span>
+              <div class="close-btn">
+                <span class="fas fa-times"></span>
+              </div>
+          </div>
+      <% } %>
+
+
+
+
+
+
+
+
+
+
+<span class="big-circle"></span>
+<img src="/images/shapefinal.png" class="square" alt="" />
+<div class="form">
+  <div class="contact-info">
+    <h3 class="title">Let's get in touch</h3>
+    <p class="text">
+      We want to create an open community with lots of room for improvement and friendly suggestions. If facing any questions, queries, or have feedback, feel free to contact us. To get more knowledge about our services and be an active member of our community, you can connect with us through any mentioned medium. We respect and value our users the most.
+    </p>
+
+    <div class="info">
+      <!-- <div class="information">
+        <img src="/images/location.png" class="icon" alt="" />
+        <p>92 Cherry Drive Uniondale, NY 11553</p>
+      </div> -->
+      <div class="information">
+        <img src="/images/emailfinal.png" class="icon" alt="" />
+        <p>thebackbenchers@gmail.com</p>
+      </div>
+      <div class="information">
+        <img src="/images/callfinal.png" class="icon" alt="" />
+        <span>
+        <p>+91 8288835970</p>
+        <p>+91 7508762397</p>
+        </span>
+      </div>
+    </div>
+
+    <div class="social-media">
+      <p>Connect with us :</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/BackBenchers-105240558097832" id="fb">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/the.back_benchers_/?igshid=1tkr1g17rzrf5" id="ist">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/back-benchers-94a049202/" id="lin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <span class="circle one"></span>
+    <span class="circle two"></span>
+
+    <form action="/query/contactusform" method="POST">
+      <h3 class="title">Contact us</h3>
+      <div class="input-container">
+        <input type="text" name="username" class="input" />
+        <label for="">Username</label>
+        <span>Username</span>
+      </div>
+      <div class="input-container">
+        <input type="email" name="email" class="input" />
+        <label for="">Email</label>
+        <span>Email</span>
+      </div>
+      <div class="input-container">
+        <input type="text" name="phone" class="input" />
+        <label for="">Phone</label>
+        <span>Phone</span>
+      </div>
+      <div class="input-container textarea">
+        <textarea name="message" class="input"></textarea>
+        <label for="">Message</label>
+        <span>Message</span>
+      </div>
+      <input type="submit" value="Send" class="btn" />
+    </form>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<script src="/javascripts/contactus.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/javascripts/pop-alert.js"></script>
+  </body>
+</html>

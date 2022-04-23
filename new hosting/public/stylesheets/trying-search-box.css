@@ -1,0 +1,153 @@
+
+
+.final-search-box input::selection { background: black; }
+
+
+
+.final-search-box{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 17px;
+    right: 95px;
+}
+
+.final-search-box input{
+    height: 30px;
+    font-size: 0.7em;
+    width: 100%;
+    outline: none;
+    padding-left: 10px;
+    border: none;
+    border-radius: 15px;
+    transition: all .5s;
+    background: black;
+    color: white;
+}
+
+.icon{
+    height: 30px;
+    width: 30px;
+    background: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+    transform: translateX(-30px);
+}
+
+.icon button span{
+    transform: rotate(-45deg);
+    
+    color: white;
+}
+
+.icon button{
+    outline: none;
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    transform: rotate(-45deg);
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:500px)
+{
+
+    .final-search-box
+    {
+        top: 17px;
+        right: 77px;
+    }
+    
+    .final-search-box input{
+        height: 30px;
+        font-size: 0.7em;
+        width: 75.5%;
+        padding-left: 8px;
+    }
+    
+    .icon{
+        height: 30px;
+        width: 30px;
+    }
+    
+
+}
+
+
+@media screen and (max-width:425px)
+{
+
+    .final-search-box
+    {
+        top: 17px;
+        right: 65px;
+    }
+    
+    .final-search-box input{
+        height: 30px;
+        font-size: 0.7em;
+        width: 62.5%;
+        padding-left: 8px;
+    }
+    
+    .icon{
+        height: 30px;
+        width: 30px;
+    }
+    
+
+}
+
+@media screen and (max-width:376px)
+{
+
+    .final-search-box
+    {
+        top: 17px;
+        right: 58px;
+    }
+    
+    .final-search-box input{
+        height: 30px;
+        font-size: 0.7em;
+        width: 65.5%;
+        padding-left: 8px;
+    }
+    
+    .icon{
+        height: 30px;
+        width: 30px;
+    }
+    
+
+}

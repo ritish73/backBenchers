@@ -50,6 +50,8 @@ var userRoutes = require('./routes/users.js')
 var postRoutes = require('./routes/posts.js')
 var adminRoutes = require('./routes/admin.js');
 var publishRoutes = require('./routes/publish.js')
+var queryRoutes = require('./routes/query.js')
+var dashboardRoutes = require('./routes/dashboard.js')
 const middlewareObj = require("./middleware");
 const { profile } = require("console");
 const router = require("./routes/publish.js");
@@ -71,14 +73,14 @@ passport.serializeUser(async function(user, done) {
   // console.log(user.id)
   
   
-  await console.log("inside serialize user\nall user ids :", "google_id : ",user.google_id," fb_id : ",user.fb_id," bb_id : ",user.bb_id);
-  console.log("the user in serialize user is")
+  // await console.log("inside serialize user\nall user ids :", "google_id : ",user.google_id," fb_id : ",user.fb_id," bb_id : ",user.bb_id);
+  // console.log("the user in serialize user is")
   console.log(user)
   await done(null, user);
 });
 
 passport.deserializeUser(async function(user, done) {
-  await console.log("inside deserialize user\nall user ids :", "google_id : ",user.google_id," fb_id : ",user.fb_id," bb_id : ",user.bb_id);
+  // await console.log("inside deserialize user\nall user ids :", "google_id : ",user.google_id," fb_id : ",user.fb_id," bb_id : ",user.bb_id);
   await done(null,user)
   
 });
@@ -93,6 +95,9 @@ app.use(function (req, res, next) {
   res.locals.currentUser = req.user || null;
   res.locals.portnumber = PORT;
   res.locals.hostname = process.env.APP_URL || `localhost`;
+  res.locals.successmessage = req.flash('success')
+  res.locals.errormessage = req.flash('error')
+  res.locals.warningmessage = req.flash('warning')
   // res.locals.hostname = `localhost`;
   next();
 });
@@ -101,6 +106,8 @@ app.use("/posts",postRoutes)
 app.use("/",userRoutes)
 app.use("/",adminRoutes)
 app.use("/publish",publishRoutes)
+app.use("/query",queryRoutes)
+app.use("/",dashboardRoutes)
 app.use(cookieParser());
 
 // cookies
@@ -111,6 +118,9 @@ app.get("/private", (req, res) => {
   console.log(getAllCookies(req));
   console.log(getUserId(req,res));
 });
+
+
+
 
 app.get("/deleteCookie", (req, res) => {
   res.clearCookie('token', {path: '/'}).send("deleted cookie");
@@ -143,8 +153,10 @@ function getUserId(req, res){
   return getAllCookies(req)['userId'];
 } 
 
-console.log(process.title)
 
+app.get("*", async (req,res)=>{
+  res.render("errorPage");
+})
 
 
 

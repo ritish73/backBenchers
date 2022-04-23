@@ -1,0 +1,68 @@
+<% if(currentUser && currentUser.isVerified  && !currentUser.deleted){ %>
+  
+    <% if(currentUser.google_id){ %>
+      <% if(currentUser.image){ %>
+          <img src="/uploads/img/profile-pics/<%=currentUser.image%>"  class="navbar-image">
+          <% } else { %>
+              <img src="/images/sd.png"  class="navbar-image">
+          <% } %>
+
+  
+  <i class="fas fa-chevron-down"></i>
+</div>
+
+<div class="profile_dd">
+  <ul class="profile_ul">
+    <li><a class="my-account" href="/dashboard"><span class="picon"><i class="fas fa-user"></i></span>My Account</a></li>
+    <li><a class="saved-later-post" href="/showSavedArticles?page=1"><span class="picon"><i class="fas fa-bookmark"></i></span>Saved to Later</a></li>
+    <li><a class="logout" href="/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+  </ul>
+</div>
+
+<% } else if(currentUser.fb_id){ %>
+  <% if(currentUser.image){ %>
+      <img src="/uploads/img/profile-pics/<%=currentUser.image%>" class="navbar-image">
+      <% } else { %>
+          <img src="/images/sd.png" class="navbar-image">
+      <% } %>
+  
+  <i class="fas fa-chevron-down"></i>
+</div>
+
+<div class="profile_dd">
+  <ul class="profile_ul">
+    <li><a class="my-account" href="/dashboard"><span class="picon"><i class="fas fa-user"></i></span>My Account</a></li>
+    <li><a class="saved-later-post" href="/showSavedArticles?page=1"><span class="picon"><i class="fas fa-bookmark"></i></span>Saved to Later</a></li>
+    <li><a class="logout" href="/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+  </ul>
+</div>
+
+<% } else { %>
+
+  <% if(currentUser.image){ %>
+      <img src="/uploads/img/profile-pics/<%=currentUser.image%>"  class="navbar-image">
+      <% } else { %>
+          <img src="/images/sd.png" class="navbar-image">
+      <% } %>
+  <i class="fas fa-chevron-down"></i>
+</div>
+
+<div class="profile_dd">
+  <ul class="profile_ul">
+  
+    <li><a class="my-account" href="/dashboard"><span class="picon"><i class="fas fa-user"></i></span>My Account</a></li>
+    <li><a class="saved-later-post" href="/showSavedArticles?page=1"><span class="picon"><i class="fas fa-bookmark"></i></span>Saved to Later</a></li>
+    <li><a class="logout" href="/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+  </ul>
+</div>
+
+
+  <% } %>
+
+
+<% } else { %>
+
+  <a href="/register_or_login"><span class="name" >Sign-in</span></a>
+</div>
+
+  <% } %>

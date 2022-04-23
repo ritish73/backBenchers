@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BackBenchers</title>
+</head>
+<body>
+  <%console.log("content of the post", post.content); var postContent = post.content;%>
+  <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+    <div>
+      <input type="text" placeholder="title" name="post[title]" value="<%= post.title %>">
+    </div>
+    <div>
+      <textarea name="post[content]" rows="30" cols="50" value="<%=post.content%>"></textarea>
+    </div>
+    <input type="text" placeholder="subject" name="post[subject]" value="<%= post.subject %>">
+    <button type="submit">submit</button>
+  </form>
+
+</body>
+</html>

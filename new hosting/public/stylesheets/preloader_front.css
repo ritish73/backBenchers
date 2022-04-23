@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title
+{
+    font-family: monospace;
+    font-size: 22px;
+    color: white;
+    letter-spacing: 5px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.bar
+{
+    width: 90px;
+    height: 2px;
+    background-color: #282246;
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+}
+
+#fill
+{
+    width: 0%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+
+@media screen and (max-width:425px)
+{
+    .souravsingla
+    {
+        font-size: 85px;
+    }
+
+}

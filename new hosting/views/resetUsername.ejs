@@ -1,0 +1,53 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/forgot-page-css2.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/final_2.png">
+    <link rel="stylesheet" href="/stylesheets/notification.css">
+        <link rel="stylesheet" href="/stylesheets/fontawesome-free-5.15.1-web/css/all.css">
+    <title>Forgot-user</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="form-container">
+
+            <div class="signin-signup">
+
+                <form action="/resetUsername/<%= token %>" method="POST" class="sign-in-form">
+
+
+                    <h2 class="title">Change Username</h2>
+                    <div class="input-field">
+                        <i class="fas fa-key"></i>
+                    <input type="text" name="username" id="username" placeholder="New usrname" required>
+
+                    </div>
+
+                    <input type="submit" value="submit" id="sign_up_submit" class="btn solid">
+                </form>
+
+               
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <img src="/images/keys3-01.png" class="image" alt="">
+            </div>
+
+        </div>
+    </div>
+    
+
+    
+    
+</body>
+
+</html>

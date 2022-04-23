@@ -6,15 +6,15 @@ var jwt = require('jsonwebtoken');
 var userSchema = new mongoose.Schema({
   
   fb_id: String,
-  fb_username: {type: String, lowercase: true, unique: true, index: true,  sparse:true, match: [/^[a-zA-Z0-9]+$/, 'is invalid']},
+  fb_username: {type: String,   match: [/^[a-zA-Z0-9_ ]*$/, 'is invalid']},
   fb_email: {type: String, lowercase: true, unique: true, index: true ,sparse:true, match: [/\S+@\S+\.\S+/, 'is invalid']},
 
   google_id: String,
-  google_username: {type: String, lowercase: true, unique: true, index: true,  sparse:true, match: [/^[a-zA-Z0-9]+$/, 'is invalid']},
+  google_username: {type: String,  match: [/^[a-zA-Z0-9_ ]*$/, 'is invalid']},
   google_email: {type: String, lowercase: true, unique: true, index: true ,sparse:true, match: [/\S+@\S+\.\S+/, 'is invalid']},
 
   bb_id: { type: Number },
-  username: {type: String, lowercase: true, unique: true, index: true,  sparse:true, match: [/^[a-zA-Z0-9]+$/, 'is invalid']},
+  username: {type: String,  index: true,  sparse:true, match: [/^[a-zA-Z0-9_ ]*$/, 'is invalid']},
   email: {type: String, lowercase: true, unique: true, index: true ,sparse:true, match: [/\S+@\S+\.\S+/, 'is invalid']},
   
   password: { 
@@ -27,21 +27,44 @@ var userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   }],
-
+  
+  first_reviewed: {type: Boolean, default: false},
+  first_published: {type: Boolean, default: false},
+  last_seen: String,
+  createdAt: String,
+  deletedAt: String,
   number_of_followers: Number,
   is_prime_member: Boolean,
   resetPasswordToken: String,
   resetPasswordExpires: Date,
+  resetUsernameToken: String,
+  resetUsernameExpires: Date,
   newsletterAccess: Boolean,
   gender: String,
   profession: String,
-  phoneNumber: String,
+  phoneNumber: {type: String, unique: true},
   fullName: String,
   dob: Date, 
+  channel: {type: String, unique: true},
+  linkedin: String,
+  emailVerificationToken: String,
+  emailVerificationTokenExpires: Date,
+  isVerified: {type: Boolean, default: false},
+  image: String,
+  deleted: {
+    type:Boolean,
+    default: false
+  },
   add_info: {
     type: Boolean,
     default: false
   },
+
+  add_info2: {
+    type: Boolean,
+    default: false
+  },
+
 
   fb_token: {
     type: String,
@@ -128,12 +151,14 @@ userSchema.methods.hashPassword = async function(next){
     if (err) {
       throw err
     } else {
-      await bcrypt.hash(user.password, salt, async function(err, hash) {
+      bcrypt.hash(user.password, salt, async function(err, hash) {
         if (err) {
           throw err
         } else {
-          console.log(hash)
-          user.password = hash;
+          console.log("new hash : ", hash)
+          user.password =  hash;
+          await user.save();
+          console.log("hashed password is set");
         }
       })
     }
@@ -142,26 +167,35 @@ userSchema.methods.hashPassword = async function(next){
 
 
 // verifying the user at the time of login , we used userScema.statics because we defined this function on the complete user model
-userSchema.statics.findByCredentials = async (username, pass)=>{
-  const user = await User.findOne({username: username});
-  console.log("user found : ", user)
-  if(!user){
-    throw new Error('this user does not exist, please signup first');
-  }
-  console.log("pass : " , pass)
-  const isMatch = await bcrypt.compare(pass, user.password); //return a boolean value
-  console.log("\n user.password : ", user.password)
-  // if(rehash === user.password){
-  //   isMatch = 1;
-  // } else {
-  //   isMatch = 0;
-  // }
-  console.log(isMatch)
-  if(!isMatch){
-    throw new Error('this user\'s password did not match, try again with correct password');
-  }
-  console.log("user in find by creds: ", user);
-  return user;
+userSchema.statics.findByCredentials = async (username, pass, req, res)=>{
+
+  try{
+
+    const user = await User.findOne({username: username});
+    // console.log("user found : ", user)
+    if(!user){
+      throw new Error('User does not exist, please signup first');
+    }
+    // console.log("pass : " , pass)
+    const isMatch = await bcrypt.compare(pass, user.password); //return a boolean value
+    // console.log("\n user.password : ", user.password)
+    // if(rehash === user.password){
+    //   isMatch = 1;
+    // } else {
+    //   isMatch = 0;
+    // }
+    // console.log(isMatch)
+    if(!isMatch){
+      throw new Error('Password did not match');
+    }
+    // console.log("user in find by creds: ", user);
+    return user;
+
+  }  catch(e){
+    req.flash('error',e.message);
+    console.log(e);
+    res.redirect('/register_or_login');
+  } 
 }
 
 var User = mongoose.model("User",userSchema);

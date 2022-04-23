@@ -1,0 +1,254 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign-in/up</title>
+        <link rel="stylesheet" href="/stylesheets/fontawesome-free-5.15.1-web/css/all.css">
+        <link rel="stylesheet" href="/stylesheets/style-sign-in-up.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/final_2.png">
+    </head>
+    
+    
+    <style>
+    
+    
+    nav img{
+        position: absolute;
+        height:70px;
+        width:70px;
+        top: 0px;
+        left: 0.7%;
+        z-index: 110;
+        cursor: pointer;
+    
+    }
+    
+    
+    </style>
+    
+    <body>
+        
+        <nav>
+            <a href="/"><img src="/images/final_2.png" alt="" class="logo-top" ></a>
+        </nav>
+    
+       
+    
+        <div class="container">
+           
+    
+            <div class="form-container">
+    
+                <div class="signin-signup">
+    
+                    <form action="/login" method="POST" class="sign-in-form">
+                    
+                    <% if(successmessage.length || errormessage.length){ %>
+                        <div class="alert show showAlert">
+                            <span class="fas fa-exclamation-circle"></span>
+                            <% if(successmessage.length){ %>
+                                <span id="success-message-color" class="msg-alert"><%=successmessage%></span>
+                            <% } else if(errormessage.length) { %>
+                                <span id="error-message-color" class="msg-alert"><%=errormessage%></span>
+                            <% } %>
+                            <div class="close-btn">
+                            <span class="fas fa-times"></span>
+                            </div>
+                        </div>
+                        <% } else{ %>
+                            <div class="alert hide">
+                                <span class="fas fa-exclamation-circle"></span>
+                                <span class="msg-alert"></span>
+                                <div class="close-btn">
+                                <span class="fas fa-times"></span>
+                                </div>
+                            </div>
+                        <% } %>
+    
+    
+                        <h2 class="title">Sign in</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="username" placeholder="username" required>
+                        </div>
+    
+    
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="password"  placeholder="password" required>
+                        </div>
+    
+    
+                        <input type="submit" value="Login" class="btn solid">
+    
+                        <p class="forgot-text"><a href="/forgot">Forgot password?</a></p>
+    
+                        <p class="social-text">Or Sign in with social platforms</p>
+    
+                        <div class="social-media">
+                            <a href="/auth/facebook" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="/google" class="social-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                        </div>
+                    </form>
+    
+                    <form action="/register" method="POST" class="sign-up-form">
+    
+                                      
+                    <% if(successmessage.length || errormessage.length){ %>
+                        <div class="alert show showAlert">
+                            <span class="fas fa-exclamation-circle"></span>
+                            <% if(successmessage.length){ %>
+                                <span id="success-message-color" class="msg-alert"><%=successmessage%></span>
+                            <% } else if(errormessage.length) { %>
+                                <span id="error-message-color" class="msg-alert"><%=errormessage%></span>
+                            <% } %>
+                            <div class="close-btn">
+                            <span class="fas fa-times"></span>
+                            </div>
+                        </div>
+                        <% } else{ %>
+                            <div class="alert hide">
+                                <span class="fas fa-exclamation-circle"></span>
+                                <span class="msg-alert"></span>
+                                <div class="close-btn">
+                                <span class="fas fa-times"></span>
+                                </div>
+                            </div>
+                        <% } %>
+    
+                        <h2 class="title">Sign up</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="username" placeholder="username" required>
+                        </div>
+    
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="email" placeholder="email" required>
+                        </div>
+    
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                        <input type="password" name="password" id="password" placeholder="password" required>
+                        </div>
+                     
+                        <style>
+                            .hide{
+                                display: none;
+                            }
+                        </style>
+    
+                        <p id='invalid-input-message' style="color: rgb(23, 117, 240)" style="margin-left: 200px" id="warning-pass"></p><br>
+                        <p id="fullmsg" style="color: rgb(23, 117, 240);margin-left: 112px"></p>
+                        <input type="submit" value="Sign up" id="sign_up_submit" class="btn solid">
+    
+                        <p class="socia-text">Or Sign up with social platforms</p>
+    
+                        <div class="social-media">
+                            <a href="/auth/facebook" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="/google" class="social-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>New here?</h3>
+                        <p>Create your first Backbenchers account and get started!</p>
+                        <a href="/register_or_login"><button class="btn transparent" id="sign-up-btn">Sign up</button></a>
+                    </div>
+                    <img src="/images/undraw_access_account_99n5.svg" class="image" alt="">
+                </div>
+    
+                <div class="panel right-panel">
+                    <div class="content">
+                        <h3>One of us?</h3>
+                        <p>Already a BackBencher!!</p>
+                        <button class="btn transparent" id="sign-in-btn">Sign in</button>
+                    </div>
+                    <img src="/images/undraw_sign_in_e6hj.svg" class="image" alt="">
+                </div>
+    
+            </div>
+        </div>
+        
+    
+        <!-- <script src="/javascripts/auth_app.js"></script> -->
+        <script src="/javascripts/passwordValidate.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="/javascripts/pop-alert.js"></script>
+    </body>
+    </html>

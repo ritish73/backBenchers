@@ -1,0 +1,63 @@
+
+<style>
+
+.makeitblack{
+    color: black;
+    text-decoration: none;
+}
+
+
+
+</style>
+
+
+<% if(showsidebox === true){ %>
+    <div class="side-box">
+        <div class="one-of-3-heading">
+            <h2 class="side-box-heading-one">Trending</h2>
+            <% for(var i=0;i<trendingCount;i++){ %>
+                <% if(trendingPosts[i].post){ %>
+
+                    <div class="sub-part-section">
+                        <h2 class="title-side-box"><a href="/posts/<%=trendingPosts[i].post.subject%>/<%=trendingPosts[i].post.slug%>" class="makeitblack"><%=trendingPosts[i].post.title%></a></h2>
+                        <div class="date-side-box">
+                        <span><%=trendingPosts[i].post.publishDay%></span>
+                    </div>
+
+                <% } %>
+        </div>
+        <% } %> 
+        </div>
+
+
+        <div class="two-of-3-heading">
+            <h2 class="side-box-heading-two">Recommended</h2>
+            <% for(var i=0;i<recommendedCount;i++){ %>
+            <% if(recommendedPosts[i].post){ %>
+            <div class="sub-part-section">
+                <h2 class="title-side-box"><a href="/posts/<%=recommendedPosts[i].post.subject%>/<%=recommendedPosts[i].post.slug%>" class="makeitblack"><%=recommendedPosts[i].post.title%></a></h2>
+                <div class="date-side-box">
+                    <span><%=recommendedPosts[i].post.publishDay%></span>
+                </div>
+            </div>
+            <% } %>
+            <% } %>  
+        </div>
+
+
+        <div class="three-of-3-heading">
+            <h2 class="side-box-heading-three">Popular</h2>
+            <% for(var i=0;i<popularCount;i++){ %>
+            <% if(trendingPosts[i].post){ %>
+                <div class="sub-part-section">
+                    <h2 class="title-side-box">
+                        <a href="/posts/<%=popularPosts[i].post.subject%>/<%=popularPosts[i].post.slug%>" class="makeitblack"><%=popularPosts[i].post.title%></a></h2>
+                    <div class="date-side-box">
+                        <span><%=popularPosts[i].post.publishDay%></span>
+                    </div>
+                </div>
+            <% }%>
+            <% } %>
+        </div>
+    </div>
+    <% } %>
