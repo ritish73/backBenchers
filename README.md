@@ -2,4 +2,4 @@
 setup back benchers 
 
 
-commsnd to start the app : node app.js
+command to start the app : node app.js
